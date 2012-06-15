@@ -9,20 +9,19 @@
 #import "RZDataManager.h"
 
 @interface RZDataManager ()
-
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
-- (NSURL *)applicationDocumentsDirectory;
+{
+@private
+    NSURL *_ubiquitousContainerURL;
+    
+    NSPersistentStore *_iCloudStore;
+    NSManagedObjectContext *_managedObjectContext;
+    NSManagedObjectModel *_managedObjectModel;
+    NSPersistentStoreCoordinator *_persistentStoreCoordinator;
+}
 
 @end
 
 @implementation RZDataManager
-
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 #pragma mark - Singleton
 
@@ -43,6 +42,7 @@ static RZDataManager *_instance;
 
 - (void)setupiCloud
 {
+    // Check the ubiquity identity
     NSFileManager *manager = [NSFileManager defaultManager];
     if (!manager.ubiquityIdentityToken)
     {
@@ -51,6 +51,21 @@ static RZDataManager *_instance;
         
         return;
     }
+    
+    // Register for iCloud changes
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDidPostChanges:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    
+    // Get the ubiquitous container URL on a separate queue
+    __weak RZDataManager *weakSelf = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+    {
+        NSURL *containerURL = [manager URLForUbiquityContainerIdentifier:nil];
+        
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            [weakSelf createPersistentStoreWithContainerURL:containerURL];
+        });
+    });
 }
 
 #pragma mark - Core Data Helpers
@@ -58,7 +73,7 @@ static RZDataManager *_instance;
 - (void)saveContext
 {
     NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    NSManagedObjectContext *managedObjectContext = _managedObjectContext;
     if (managedObjectContext != nil)
     {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
@@ -71,87 +86,57 @@ static RZDataManager *_instance;
     }
 }
 
-#pragma mark - Core Data Stack
+#pragma mark - Core Data & iCloud Stack
 
-- (NSManagedObjectContext *)managedObjectContext
+- (void)createPersistentStoreWithContainerURL:(NSURL *)url
 {
-    if (_managedObjectContext != nil)
-    {
-        return _managedObjectContext;
-    }
+    _ubiquitousContainerURL = url;
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil)
-    {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
-    
-    return _managedObjectContext;
-}
-
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (_managedObjectModel != nil)
-    {
-        return _managedObjectModel;
-    }
-    
+    // Create the managed object model and persistent store coordinator
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Totalee" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
     
-    return _managedObjectModel;
-}
-
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (_persistentStoreCoordinator != nil)
+    // Create a nosync folder to hold the sqlite file
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *storeDirectory = [_ubiquitousContainerURL URLByAppendingPathComponent:@"Totalee.nosync"];
+    if (![fileManager fileExistsAtPath:[storeDirectory path]])
     {
-        return _persistentStoreCoordinator;
+        BOOL success = [fileManager createDirectoryAtPath:[storeDirectory path] withIntermediateDirectories:YES attributes:nil error:NULL];
+        
+        if (!success) NSLog(@"Could not create nosync directory");
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Totalee.sqlite"];
+    // Get the store URL (not synced) and the URL for the ubiquitous content (change logs)
+    NSURL *storeURL = [storeDirectory URLByAppendingPathComponent:@"Totalee.sqlite"];
+    NSURL *dataURL = [_ubiquitousContainerURL URLByAppendingPathComponent:@"TotaleeData"];
     
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    NSDictionary *options = @{ NSPersistentStoreUbiquitousContentNameKey : @"TotaleeStore",
+                                NSPersistentStoreUbiquitousContentURLKey : dataURL };
+    
+    // Create the persistent store
+    NSError *error;
+    _iCloudStore = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                             configuration:nil
+                                                                       URL:storeURL
+                                                                   options:options
+                                                                     error:&error];
+    
+    if (error)
     {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
+        NSLog(@"Error creating iCloud store : %@", error.localizedDescription);
+    }
     
-    return _persistentStoreCoordinator;
+    // Create the managed object context
+    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
 }
 
-#pragma mark - Application's Documents directory
+#pragma mark - iCloud Changes
 
-// Returns the URL to the application's Documents directory.
-- (NSURL *)applicationDocumentsDirectory
+- (void)iCloudDidPostChanges:(NSPersistentStoreCoordinator *)coordinator
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    
 }
 
 @end
