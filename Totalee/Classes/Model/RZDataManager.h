@@ -8,11 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RZSheet.h"
+#import "RZSheetItem.h"
+
 @interface RZDataManager : NSObject
 
-+ (RZDataManager *)sharedManager;
+@property BOOL connectedToiCloud;
+@property NSArray *sheets;
 
+// Initialization
++ (RZDataManager *)sharedManager;
 - (void)setupiCloud;
-- (void)saveContext;
+- (void)save;
+
+// Insert/Delete Methods
+- (RZSheet *)createSheetWithName:(NSString *)name;
+- (RZSheetItem *)createSheetItemWithName:(NSString *)name total:(float)total inSheet:(RZSheet *)sheet;
+- (void)deleteSheetItem:(RZSheetItem *)sheetItem;
+- (void)deleteSheet:(RZSheet *)sheet;
 
 @end
+
+static NSString *RZDataManagerDidConnectToiCloudNotification = @"RZDataManagerDidConnectToiCloudNotification";

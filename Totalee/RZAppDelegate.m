@@ -9,6 +9,7 @@
 #import "RZAppDelegate.h"
 
 #import "RZDataManager.h"
+#import "RZRootViewController.h"
 
 @implementation RZAppDelegate
 
@@ -20,7 +21,10 @@
     // Create the window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    //TODO: Add root views
+    RZRootViewController *root = [[RZRootViewController alloc] init];
+    root.view.frame = self.window.bounds;
+    
+    self.window.rootViewController = root;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -36,8 +40,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[RZDataManager sharedManager] save];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -52,8 +55,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Saves changes in the application's managed object context before the application terminates.
-    [[RZDataManager sharedManager] saveContext];
+    [[RZDataManager sharedManager] save];
 }
 
 @end

@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1480" systemVersion="12A239" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Sheet" representedClassName="RZSheet" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SheetItem" inverseName="sheet" inverseEntity="SheetItem" syncable="YES"/>
+    </entity>
+    <entity name="SheetItem" representedClassName="RZSheetItem" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="sheet" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Sheet" inverseName="items" inverseEntity="Sheet" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Sheet" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="SheetItem" positionX="385" positionY="228" width="128" height="105"/>
+    </elements>
 </model>

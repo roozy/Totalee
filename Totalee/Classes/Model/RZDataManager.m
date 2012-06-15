@@ -46,7 +46,7 @@ static RZDataManager *_instance;
     NSFileManager *manager = [NSFileManager defaultManager];
     if (!manager.ubiquityIdentityToken)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You must be signed into iCloud to use Totalee" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You must be signed into iCloud to use Totalee." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
         return;
@@ -70,7 +70,7 @@ static RZDataManager *_instance;
 
 #pragma mark - Core Data Helpers
 
-- (void)saveContext
+- (void)save
 {
     NSError *error = nil;
     NSManagedObjectContext *managedObjectContext = _managedObjectContext;
@@ -78,12 +78,45 @@ static RZDataManager *_instance;
     {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
         {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+            NSLog(@"Error saving context : %@", error);
         } 
     }
+}
+
+- (RZSheet *)createSheetWithName:(NSString *)name
+{
+    RZSheet *sheet = [NSEntityDescription insertNewObjectForEntityForName:@"Sheet" inManagedObjectContext:_managedObjectContext];
+    sheet.name = name;
+    
+    return sheet;
+}
+
+- (RZSheetItem *)createSheetItemWithName:(NSString *)name total:(float)total inSheet:(RZSheet *)sheet
+{
+    RZSheetItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"SheetItem" inManagedObjectContext:_managedObjectContext];
+    item.name = name;
+    item.total = total;
+    
+    [sheet addItemsObject:item];
+    
+    return item;
+}
+
+- (void)deleteSheetItem:(RZSheetItem *)sheetItem
+{
+    [sheetItem.sheet removeItemsObject:sheetItem];
+    [_managedObjectContext deleteObject:sheetItem];
+}
+
+- (void)deleteSheet:(RZSheet *)sheet
+{
+    NSArray *items = [sheet.items allObjects];
+    for (int i = 0; i < items.count; i++)
+    {
+        [self deleteSheetItem:items[i]];
+    }
+    
+    [_managedObjectContext deleteObject:sheet];
 }
 
 #pragma mark - Core Data & iCloud Stack
@@ -112,7 +145,8 @@ static RZDataManager *_instance;
     NSURL *dataURL = [_ubiquitousContainerURL URLByAppendingPathComponent:@"TotaleeData"];
     
     NSDictionary *options = @{ NSPersistentStoreUbiquitousContentNameKey : @"TotaleeStore",
-                                NSPersistentStoreUbiquitousContentURLKey : dataURL };
+                                NSPersistentStoreUbiquitousContentURLKey : dataURL,
+                            NSMigratePersistentStoresAutomaticallyOption : @YES};
     
     // Create the persistent store
     NSError *error;
@@ -124,19 +158,23 @@ static RZDataManager *_instance;
     
     if (error)
     {
-        NSLog(@"Error creating iCloud store : %@", error.localizedDescription);
+        NSLog(@"Error creating iCloud store : %@", error);
     }
     
     // Create the managed object context
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
+    
+    _connectedToiCloud = YES;
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidConnectToiCloudNotification object:nil]];
 }
 
 #pragma mark - iCloud Changes
 
 - (void)iCloudDidPostChanges:(NSPersistentStoreCoordinator *)coordinator
 {
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Got some changes!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 @end
