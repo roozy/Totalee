@@ -30,3 +30,4 @@
 @end
 
 static NSString *RZDataManagerDidConnectToiCloudNotification = @"RZDataManagerDidConnectToiCloudNotification";
+static NSString *RZDataManagerDidMakeChangesNotification = @"RZDataManagerDidMakeChangesNotification";

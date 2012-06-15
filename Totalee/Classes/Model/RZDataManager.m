@@ -119,6 +119,14 @@ static RZDataManager *_instance;
     [_managedObjectContext deleteObject:sheet];
 }
 
+- (void)updateSheets
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Sheet"];
+    NSArray *results = [_managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    _sheets = results;
+}
+
 #pragma mark - Core Data & iCloud Stack
 
 - (void)createPersistentStoreWithContainerURL:(NSURL *)url
@@ -165,6 +173,8 @@ static RZDataManager *_instance;
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
     
+    [self updateSheets];
+    
     _connectedToiCloud = YES;
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidConnectToiCloudNotification object:nil]];
 }
@@ -173,8 +183,8 @@ static RZDataManager *_instance;
 
 - (void)iCloudDidPostChanges:(NSPersistentStoreCoordinator *)coordinator
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Got some changes!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    [self updateSheets];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidMakeChangesNotification object:nil]];
 }
 
 @end

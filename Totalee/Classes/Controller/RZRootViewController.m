@@ -18,17 +18,7 @@
 
 - (void)viewDidLoad
 {
-    UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addSheet)];
-    [self.view addGestureRecognizer:tapper];
-}
-
-- (void)addSheet
-{
-    [[RZDataManager sharedManager] createSheetWithName:@"MyTestSheet"];
-    [[RZDataManager sharedManager] save];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Created a new sheet" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
