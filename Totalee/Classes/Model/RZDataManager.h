@@ -1,5 +1,5 @@
 //
-//  RZAppDelegate.h
+//  RZDataManager.h
 //  Totalee
 //
 //  Created by Andy Roth on 6/15/12.
@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RZAppDelegate : UIResponder <UIApplicationDelegate>
+@interface RZDataManager : NSObject
 
-@property (strong, nonatomic) UIWindow *window;
++ (RZDataManager *)sharedManager;
+
+- (void)setupiCloud;
+- (void)saveContext;
 
 @end
