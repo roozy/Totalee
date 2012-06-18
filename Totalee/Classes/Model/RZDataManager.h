@@ -14,7 +14,7 @@
 @interface RZDataManager : NSObject
 
 @property BOOL connectedToiCloud;
-@property NSArray *sheets;
+@property NSFetchedResultsController *fetchedSheetsController;
 
 // Initialization
 + (RZDataManager *)sharedManager;

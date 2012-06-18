@@ -16,5 +16,6 @@
 @dynamic total;
 @dynamic category;
 @dynamic sheet;
+@dynamic order;
 
 @end

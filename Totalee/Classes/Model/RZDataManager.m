@@ -87,6 +87,9 @@ static RZDataManager *_instance;
 {
     RZSheet *sheet = [NSEntityDescription insertNewObjectForEntityForName:@"Sheet" inManagedObjectContext:_managedObjectContext];
     sheet.name = name;
+    sheet.order = ((RZSheet *)[_fetchedSheetsController.fetchedObjects lastObject]).order + 1;
+    
+    [self save];
     
     return sheet;
 }
@@ -96,8 +99,11 @@ static RZDataManager *_instance;
     RZSheetItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"SheetItem" inManagedObjectContext:_managedObjectContext];
     item.name = name;
     item.total = total;
+    item.order = ((RZSheetItem *)[sheet.sortedItems lastObject]).order + 1;
     
     [sheet addItemsObject:item];
+    
+    [self save];
     
     return item;
 }
@@ -106,6 +112,8 @@ static RZDataManager *_instance;
 {
     [sheetItem.sheet removeItemsObject:sheetItem];
     [_managedObjectContext deleteObject:sheetItem];
+    
+    [self save];
 }
 
 - (void)deleteSheet:(RZSheet *)sheet
@@ -117,14 +125,8 @@ static RZDataManager *_instance;
     }
     
     [_managedObjectContext deleteObject:sheet];
-}
-
-- (void)updateSheets
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Sheet"];
-    NSArray *results = [_managedObjectContext executeFetchRequest:fetchRequest error:NULL];
     
-    _sheets = results;
+    [self save];
 }
 
 #pragma mark - Core Data & iCloud Stack
@@ -173,7 +175,13 @@ static RZDataManager *_instance;
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
     
-    [self updateSheets];
+    // Create the fetched results controller
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Sheet"];
+    NSSortDescriptor *orderDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
+    fetchRequest.sortDescriptors = @[ orderDescriptor ];
+    
+    _fetchedSheetsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    [_fetchedSheetsController performFetch:NULL];
     
     _connectedToiCloud = YES;
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidConnectToiCloudNotification object:nil]];
@@ -181,9 +189,11 @@ static RZDataManager *_instance;
 
 #pragma mark - iCloud Changes
 
-- (void)iCloudDidPostChanges:(NSPersistentStoreCoordinator *)coordinator
+- (void)iCloudDidPostChanges:(NSNotification *)note
 {
-    [self updateSheets];
+    NSPersistentStoreCoordinator *coordinator = note.object;
+    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidMakeChangesNotification object:nil]];
 }
 

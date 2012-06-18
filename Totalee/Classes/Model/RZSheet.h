@@ -15,6 +15,9 @@
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSSet *items;
+@property (nonatomic) int16_t order;
+
+@property (nonatomic, readonly) NSArray *sortedItems;
 
 @end
 

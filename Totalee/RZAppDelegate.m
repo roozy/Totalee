@@ -9,7 +9,6 @@
 #import "RZAppDelegate.h"
 
 #import "RZDataManager.h"
-#import "RZRootViewController.h"
 
 @implementation RZAppDelegate
 
@@ -21,8 +20,12 @@
     // Create the window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    RZRootViewController *root = [[RZRootViewController alloc] init];
-    root.view.frame = self.window.bounds;
+    UIViewController *root;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        UINavigationController *rootNavController = [[UIStoryboard storyboardWithName:@"Root~iPhone" bundle:nil] instantiateInitialViewController];
+        root = rootNavController;
+    }
     
     self.window.rootViewController = root;
     

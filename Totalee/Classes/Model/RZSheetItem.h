@@ -25,6 +25,7 @@ typedef int16_t RZSheetItemCategory;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) float total;
 @property (nonatomic) RZSheetItemCategory category;
+@property (nonatomic) int16_t order;
 
 @property (nonatomic, retain) RZSheet *sheet;
 

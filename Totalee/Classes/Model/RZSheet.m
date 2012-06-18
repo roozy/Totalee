@@ -14,5 +14,11 @@
 
 @dynamic name;
 @dynamic items;
+@dynamic order;
+
+- (NSArray *)sortedItems
+{
+    return [self.items sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES] ]];
+}
 
 @end
