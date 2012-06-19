@@ -42,6 +42,8 @@ static RZDataManager *_instance;
 
 - (void)setupiCloud
 {
+    _connectedToiCloud = NO;
+    
     // Check the ubiquity identity
     NSFileManager *manager = [NSFileManager defaultManager];
     if (!manager.ubiquityIdentityToken)
@@ -190,9 +192,8 @@ static RZDataManager *_instance;
 #pragma mark - iCloud Changes
 
 - (void)iCloudDidPostChanges:(NSNotification *)note
-{
-    NSPersistentStoreCoordinator *coordinator = note.object;
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+{    
+    [_fetchedSheetsController performFetch:NULL];
     
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidMakeChangesNotification object:nil]];
 }

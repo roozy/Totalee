@@ -13,6 +13,7 @@
 @interface RZSheetListTableViewController ()
 {
     NSMutableArray *_sheets;
+    RZDataManager *_dataManager;
 }
 
 @end
@@ -35,13 +36,15 @@
  
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSheet)];
-    self.navigationItem.leftBarButtonItem = add;
-    
-    _sheets = [NSMutableArray arrayWithArray:[RZDataManager sharedManager].fetchedSheetsController.fetchedObjects];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
+    _dataManager = [RZDataManager sharedManager];
+    if (!_dataManager.connectedToiCloud)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudConnected) name:RZDataManagerDidConnectToiCloudNotification object:nil];
+    }
+    else
+    {
+        [self iCloudConnected];
+    }
 }
 
 #pragma mark - Table view data source
@@ -119,7 +122,7 @@
 
 - (void)addSheet
 {
-    RZSheet *newSheet = [[RZDataManager sharedManager] createSheetWithName:@"New Sheet"];
+    RZSheet *newSheet = [_dataManager createSheetWithName:@"New Sheet"];
     
     [self.tableView beginUpdates];
     
@@ -130,21 +133,32 @@
 }
 
 #pragma mark - iCloud
+         
+- (void)iCloudConnected
+{
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSheet)];
+    self.navigationItem.leftBarButtonItem = add;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
+    
+    [self updateData];
+}
 
 - (void)iCloudDataUpdated
 {
     // Use a fetched view controller instead
-    NSError *error;
-    [[RZDataManager sharedManager].fetchedSheetsController performFetch:&error];
-    
-    if (error)
+    if (_dataManager.connectedToiCloud)
     {
-        NSLog(@"error : %@", error);
+        [self updateData];
     }
-    else
-    {
-        NSLog(@"data is updated : %d", [RZDataManager sharedManager].fetchedSheetsController.fetchedObjects.count);
-    }
+}
+
+- (void)updateData
+{
+    _sheets = [NSMutableArray arrayWithArray:_dataManager.fetchedSheetsController.fetchedObjects];
+    [self.tableView reloadData];
 }
 
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RZSheetListTableViewController : UITableViewController
+@interface RZSheetListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @end

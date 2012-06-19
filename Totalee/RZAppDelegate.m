@@ -26,6 +26,11 @@
         UINavigationController *rootNavController = [[UIStoryboard storyboardWithName:@"Root~iPhone" bundle:nil] instantiateInitialViewController];
         root = rootNavController;
     }
+    else
+    {
+        UINavigationController *rootNavController = [[UIStoryboard storyboardWithName:@"Root~iPad" bundle:nil] instantiateInitialViewController];
+        root = rootNavController;
+    }
     
     self.window.rootViewController = root;
     
