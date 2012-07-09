@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RZSheetListCell : UITableViewCell
+#import "RZSheet.h"
+
+@interface RZSheetListCell : UITableViewCell <UITextFieldDelegate>
+
+@property (nonatomic, strong) RZSheet *sheet;
 
 @end

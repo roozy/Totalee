@@ -8,22 +8,38 @@
 
 #import "RZSheetListCell.h"
 
+#import "RZDataManager.h"
+
+@interface RZSheetListCell ()
+
+@property (nonatomic, weak) IBOutlet UITextField *textField;
+
+@end
+
 @implementation RZSheetListCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void)awakeFromNib
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    [super awakeFromNib];
+    
+    _textField.delegate = self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)setSheet:(RZSheet *)sheet
 {
-    [super setSelected:selected animated:animated];
+    _sheet = sheet;
+    
+    _textField.text = _sheet.name;
+}
 
-    // Configure the view for the selected state
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    _sheet.name = _textField.text;
+    [[RZDataManager sharedManager] save];
+    
+    return NO;
 }
 
 @end
