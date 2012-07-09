@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F3CBA4A158BF1AA00CF8A28 /* RZSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CBA49158BF1AA00CF8A28 /* RZSheet.m */; };
 		1F3CBA4E158BF1AB00CF8A28 /* RZSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CBA4D158BF1AB00CF8A28 /* RZSheetItem.m */; };
+		1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */; };
 		1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */; };
 		1F958FEF158BD15400AEB576 /* RZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F958FEE158BD15400AEB576 /* RZDataManager.m */; };
 		1FC5A47A15913D2900E56862 /* Root~iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FC5A47915913D2900E56862 /* Root~iPad.storyboard */; };
@@ -28,6 +29,8 @@
 		1F3CBA49158BF1AA00CF8A28 /* RZSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheet.m; sourceTree = "<group>"; };
 		1F3CBA4C158BF1AB00CF8A28 /* RZSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetItem.h; sourceTree = "<group>"; };
 		1F3CBA4D158BF1AB00CF8A28 /* RZSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetItem.m; sourceTree = "<group>"; };
+		1F6968AC15AB6BEC00A1EAA5 /* RZSheetListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListCell.h; sourceTree = "<group>"; };
+		1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetListCell.m; sourceTree = "<group>"; };
 		1F723F7B158D213D00FC0955 /* RZSheetListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListTableViewController.h; sourceTree = "<group>"; };
 		1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetListTableViewController.m; sourceTree = "<group>"; };
 		1F958FEC158BD02B00AEB576 /* Totalee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Totalee.entitlements; sourceTree = "<group>"; };
@@ -99,6 +102,8 @@
 		1F958FE8158BCFFB00AEB576 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F6968AC15AB6BEC00A1EAA5 /* RZSheetListCell.h */,
+				1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				1F3CBA4A158BF1AA00CF8A28 /* RZSheet.m in Sources */,
 				1F3CBA4E158BF1AB00CF8A28 /* RZSheetItem.m in Sources */,
 				1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */,
+				1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
