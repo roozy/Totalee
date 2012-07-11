@@ -42,4 +42,9 @@
     return NO;
 }
 
+- (void)edit
+{
+    [_textField becomeFirstResponder];
+}
+
 @end

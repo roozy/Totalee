@@ -12,7 +12,9 @@
 		1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */; };
 		1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */; };
 		1F958FEF158BD15400AEB576 /* RZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F958FEE158BD15400AEB576 /* RZDataManager.m */; };
-		1FC5A47A15913D2900E56862 /* Root~iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FC5A47915913D2900E56862 /* Root~iPad.storyboard */; };
+		1FC5419215AE1B47007F1476 /* Root~iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FC5A47915913D2900E56862 /* Root~iPad.storyboard */; };
+		1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419415AE1E11007F1476 /* RZItemListViewController.m */; };
+		1FC5419815AE2A26007F1476 /* RZItemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419715AE2A26007F1476 /* RZItemListCell.m */; };
 		1FF727A8158BCF9300E29541 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF727A7158BCF9300E29541 /* UIKit.framework */; };
 		1FF727AA158BCF9300E29541 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF727A9158BCF9300E29541 /* Foundation.framework */; };
 		1FF727AC158BCF9300E29541 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF727AB158BCF9300E29541 /* CoreGraphics.framework */; };
@@ -36,6 +38,10 @@
 		1F958FEC158BD02B00AEB576 /* Totalee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Totalee.entitlements; sourceTree = "<group>"; };
 		1F958FED158BD15400AEB576 /* RZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZDataManager.h; sourceTree = "<group>"; };
 		1F958FEE158BD15400AEB576 /* RZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZDataManager.m; sourceTree = "<group>"; };
+		1FC5419315AE1E11007F1476 /* RZItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZItemListViewController.h; sourceTree = "<group>"; };
+		1FC5419415AE1E11007F1476 /* RZItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZItemListViewController.m; sourceTree = "<group>"; };
+		1FC5419615AE2A26007F1476 /* RZItemListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZItemListCell.h; sourceTree = "<group>"; };
+		1FC5419715AE2A26007F1476 /* RZItemListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZItemListCell.m; sourceTree = "<group>"; };
 		1FC5A47915913D2900E56862 /* Root~iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Root~iPad.storyboard"; sourceTree = "<group>"; };
 		1FF727A3158BCF9300E29541 /* Totalee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Totalee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF727A7158BCF9300E29541 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -82,6 +88,8 @@
 			children = (
 				1F723F7B158D213D00FC0955 /* RZSheetListTableViewController.h */,
 				1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */,
+				1FC5419315AE1E11007F1476 /* RZItemListViewController.h */,
+				1FC5419415AE1E11007F1476 /* RZItemListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -104,6 +112,8 @@
 			children = (
 				1F6968AC15AB6BEC00A1EAA5 /* RZSheetListCell.h */,
 				1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */,
+				1FC5419615AE2A26007F1476 /* RZItemListCell.h */,
+				1FC5419715AE2A26007F1476 /* RZItemListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -240,7 +250,7 @@
 			files = (
 				1FF727B4158BCF9300E29541 /* InfoPlist.strings in Resources */,
 				1FF7F5A9158FBF1B00E0C4A6 /* Root~iPhone.storyboard in Resources */,
-				1FC5A47A15913D2900E56862 /* Root~iPad.storyboard in Resources */,
+				1FC5419215AE1B47007F1476 /* Root~iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +269,8 @@
 				1F3CBA4E158BF1AB00CF8A28 /* RZSheetItem.m in Sources */,
 				1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */,
 				1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */,
+				1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */,
+				1FC5419815AE2A26007F1476 /* RZItemListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

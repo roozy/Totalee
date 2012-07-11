@@ -10,11 +10,14 @@
 
 #import "RZDataManager.h"
 #import "RZSheetListCell.h"
+#import "RZItemListViewController.h"
 
 @interface RZSheetListTableViewController ()
 {
+@private
     NSMutableArray *_sheets;
     RZDataManager *_dataManager;
+    RZSheet *_selectedSheet;
 }
 
 @end
@@ -46,6 +49,15 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowItems"])
+    {
+        RZItemListViewController *itemList = (RZItemListViewController *)segue.destinationViewController;
+        itemList.sheet = _selectedSheet;
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -61,6 +73,11 @@
     RZSheet *sheet = _sheets[indexPath.row];
     cell.sheet = sheet;
     
+    if (indexPath.row == _sheets.count - 1 && [sheet.name isEqualToString:@""])
+    {
+        [cell edit];
+    }
+    
     return cell;
 }
 
@@ -71,7 +88,7 @@
         // Delete the row from the data source
         [tableView beginUpdates];
         
-        [[RZDataManager sharedManager] deleteSheet:[_sheets objectAtIndex:indexPath.row]];
+        [_dataManager deleteSheet:_sheets[indexPath.row]];
         [_sheets removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
@@ -83,22 +100,22 @@
 
 - (void)addSheet
 {
-    RZSheet *newSheet = [_dataManager createSheetWithName:@"New Sheet"];
+    RZSheet *newSheet = [_dataManager createSheetWithName:@""];
     
     [self.tableView beginUpdates];
     
     [_sheets addObject:newSheet];
     [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:_sheets.count - 1 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
     
-    [self.tableView endUpdates];
+    [self.tableView endUpdates];    
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     RZSheet *sheet = [_sheets objectAtIndex:indexPath.row];
+    _selectedSheet = sheet;
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Details for %@", sheet.name] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    [self performSegueWithIdentifier:@"ShowItems" sender:nil];
 }
 
 #pragma mark - iCloud
@@ -108,7 +125,8 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSheet)];
-    self.navigationItem.leftBarButtonItem = add;
+    self.toolbarItems = @[ add ];
+    self.navigationController.toolbarHidden = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
     
@@ -117,7 +135,6 @@
 
 - (void)iCloudDataUpdated
 {
-    // Use a fetched view controller instead
     if (_dataManager.connectedToiCloud)
     {
         [self updateData];

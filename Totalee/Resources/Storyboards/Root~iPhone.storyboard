@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2809" systemVersion="12A256" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ISw-JR-WO2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2809" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ISw-JR-WO2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1884"/>
     </dependencies>
@@ -20,7 +20,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" text="" id="rsn-mo-CPR">
+                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sheet Name" minimumFontSize="17" text="" id="rsn-mo-CPR">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="268" id="Rnb-wP-jZu"/>
                                                 <constraint firstAttribute="height" constant="31" id="jBc-mF-lRs"/>
@@ -47,10 +47,80 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="UQF-kK-HPs"/>
+                    <connections>
+                        <segue destination="rbA-ZC-jvL" kind="push" identifier="ShowItems" id="niA-r6-R9C"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YS-kc-R3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="626" y="-47"/>
+        </scene>
+        <!--Item List View Controller-->
+        <scene sceneID="Fxf-wp-7H4">
+            <objects>
+                <tableViewController id="rbA-ZC-jvL" customClass="RZItemListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QzB-A0-MkC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" id="oaW-R9-uQA" customClass="RZItemListCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item Name" minimumFontSize="17" text="" id="Jle-6P-Nan">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="G6G-ld-rbW"/>
+                                                <constraint firstAttribute="width" constant="218" id="mQZ-fI-5eE"/>
+                                            </constraints>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        </textField>
+                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" minimumFontSize="17" text="" textAlignment="right" id="zRW-d5-QlT">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="66" id="HdR-mY-5ai"/>
+                                            </constraints>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        </textField>
+                                        <view translatesAutoresizingMaskIntoConstraints="NO" contentMode="scaleToFill" id="G26-cu-XN4">
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="zRW-d5-QlT" secondAttribute="trailing" constant="10" id="0CF-JF-S6Y"/>
+                                    <constraint firstItem="zRW-d5-QlT" firstAttribute="leading" secondItem="G26-cu-XN4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="C0j-Js-Rzv"/>
+                                    <constraint firstItem="G26-cu-XN4" firstAttribute="leading" secondItem="Jle-6P-Nan" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Kpy-Md-mQE"/>
+                                    <constraint firstItem="Jle-6P-Nan" firstAttribute="leading" secondItem="oaW-R9-uQA" secondAttribute="leading" constant="9" id="jwe-Yh-aZU"/>
+                                    <constraint firstItem="G26-cu-XN4" firstAttribute="top" secondItem="oaW-R9-uQA" secondAttribute="top" type="default" id="lsv-6Z-CAW"/>
+                                    <constraint firstItem="zRW-d5-QlT" firstAttribute="bottom" secondItem="Jle-6P-Nan" secondAttribute="bottom" type="default" id="ok5-gx-uSV"/>
+                                    <constraint firstItem="Jle-6P-Nan" firstAttribute="top" secondItem="oaW-R9-uQA" secondAttribute="top" constant="6" id="qqR-hC-kqI"/>
+                                    <constraint firstItem="zRW-d5-QlT" firstAttribute="baseline" secondItem="Jle-6P-Nan" secondAttribute="baseline" type="default" id="sSu-i0-Zug"/>
+                                    <constraint firstItem="G26-cu-XN4" firstAttribute="bottom" secondItem="oaW-R9-uQA" secondAttribute="bottom" type="default" id="v2m-ha-meR"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="nameTextField" destination="Jle-6P-Nan" id="qu8-Ko-R10"/>
+                                    <outlet property="totalTextField" destination="zRW-d5-QlT" id="Hb8-7Z-N3A"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rbA-ZC-jvL" id="8MZ-mk-QMK"/>
+                            <outlet property="delegate" destination="rbA-ZC-jvL" id="JPo-P6-KT4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="CeP-Wp-KZq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bx8-pd-z9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1121" y="-47"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="itp-0o-pkR">
@@ -74,6 +144,16 @@
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RZItemListCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RZItemListCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="totalTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RZItemListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RZItemListViewController.h"/>
         </class>
         <class className="RZSheetListCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RZSheetListCell.h"/>

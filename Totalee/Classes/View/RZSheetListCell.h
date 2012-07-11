@@ -10,8 +10,17 @@
 
 #import "RZSheet.h"
 
+@protocol RZSheetListCellDelegate <NSObject>
+
+- (void)cellDidSelectSheet:(RZSheet *)sheet;
+
+@end
+
 @interface RZSheetListCell : UITableViewCell <UITextFieldDelegate>
 
+@property (nonatomic, weak) id <RZSheetListCellDelegate> delegate;
 @property (nonatomic, strong) RZSheet *sheet;
+
+- (void)edit;
 
 @end
