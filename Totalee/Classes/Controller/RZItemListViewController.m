@@ -10,13 +10,14 @@
 
 #import "RZSheetItem.h"
 #import "RZDataManager.h"
-#import "RZItemListCell.h"
+#import "RZTotalFooterView.h"
 
 @interface RZItemListViewController ()
 {
 @private
     NSMutableArray *_items;
     RZDataManager *_dataManager;
+    RZTotalFooterView *_footer;
 }
 
 @end
@@ -37,6 +38,22 @@
     _items = [NSMutableArray array];
     [_items addObjectsFromArray:_sheet.sortedItems];
     _dataManager = [RZDataManager sharedManager];
+    
+    _footer = [[RZTotalFooterView alloc] init];
+    _footer.textLabel.text = @"Total";
+    
+    [self updateTotal];
+}
+
+- (void)updateTotal
+{
+    float total = 0.0;
+    for (RZSheetItem *item in _items)
+    {
+        total += item.total;
+    }
+    
+    _footer.total = total;
 }
 
 #pragma mark - Table view data source
@@ -46,12 +63,18 @@
     return _items.count;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return _footer;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RZItemListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemCell"];
     
     RZSheetItem *item = _items[indexPath.row];
     cell.item = item;
+    cell.delegate = self;
     
     if (indexPath.row == _items.count - 1 && [item.name isEqualToString:@""])
     {
@@ -73,6 +96,8 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
         [tableView endUpdates];
+        
+        [self updateTotal];
     }
 }
 
@@ -88,6 +113,13 @@
     [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:_items.count - 1 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
     
     [self.tableView endUpdates];
+}
+
+#pragma mark - Cell Delegate
+
+- (void)cellDidChangeItem
+{
+    [self updateTotal];
 }
 
 @end

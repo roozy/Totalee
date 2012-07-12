@@ -11,6 +11,7 @@
 		1F3CBA4E158BF1AB00CF8A28 /* RZSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CBA4D158BF1AB00CF8A28 /* RZSheetItem.m */; };
 		1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */; };
 		1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */; };
+		1F77119215AF381600A91D29 /* RZTotalFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F77119115AF381600A91D29 /* RZTotalFooterView.m */; };
 		1F958FEF158BD15400AEB576 /* RZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F958FEE158BD15400AEB576 /* RZDataManager.m */; };
 		1FC5419215AE1B47007F1476 /* Root~iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FC5A47915913D2900E56862 /* Root~iPad.storyboard */; };
 		1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419415AE1E11007F1476 /* RZItemListViewController.m */; };
@@ -35,6 +36,8 @@
 		1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetListCell.m; sourceTree = "<group>"; };
 		1F723F7B158D213D00FC0955 /* RZSheetListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListTableViewController.h; sourceTree = "<group>"; };
 		1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetListTableViewController.m; sourceTree = "<group>"; };
+		1F77119015AF381600A91D29 /* RZTotalFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZTotalFooterView.h; sourceTree = "<group>"; };
+		1F77119115AF381600A91D29 /* RZTotalFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZTotalFooterView.m; sourceTree = "<group>"; };
 		1F958FEC158BD02B00AEB576 /* Totalee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Totalee.entitlements; sourceTree = "<group>"; };
 		1F958FED158BD15400AEB576 /* RZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZDataManager.h; sourceTree = "<group>"; };
 		1F958FEE158BD15400AEB576 /* RZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZDataManager.m; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */,
 				1FC5419615AE2A26007F1476 /* RZItemListCell.h */,
 				1FC5419715AE2A26007F1476 /* RZItemListCell.m */,
+				1F77119015AF381600A91D29 /* RZTotalFooterView.h */,
+				1F77119115AF381600A91D29 /* RZTotalFooterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */,
 				1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */,
 				1FC5419815AE2A26007F1476 /* RZItemListCell.m in Sources */,
+				1F77119215AF381600A91D29 /* RZTotalFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

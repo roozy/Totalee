@@ -31,21 +31,44 @@
 {
     _item = item;
     
-    _nameTextField.text = item.name;
-    _totalTextField.text = item.total == 0.0 ? @"" : [NSString stringWithFormat:@"%.2f", item.total];
+    [self updateColors];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    textField.textColor = [UIColor blackColor];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self updateData];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     
-    _item.name = _nameTextField.text;
-    _item.total = [_totalTextField.text floatValue];
-    _totalTextField.text = _item.total == 0.0 ? @"" : [NSString stringWithFormat:@"%.2f", _item.total];
-    
-    [[RZDataManager sharedManager] save];
+    [self updateData];
     
     return NO;
+}
+
+- (void)updateData
+{
+    _item.name = _nameTextField.text;
+    _item.total = [_totalTextField.text floatValue];
+    
+    [self updateColors];
+    
+    [[RZDataManager sharedManager] save];
+    [_delegate cellDidChangeItem];
+}
+
+- (void)updateColors
+{
+    _nameTextField.text = _item.name;
+    _totalTextField.text = _item.total == 0.0 ? @"" : [NSString stringWithFormat:@"%.2f", _item.total];
+    _totalTextField.textColor = _item.total > 0 ? [UIColor colorWithRed:0 green:102.0/255.0 blue:0 alpha:1.0] : [UIColor colorWithRed:153.0/255.0 green:0 blue:0 alpha:1.0];
 }
 
 - (void)edit

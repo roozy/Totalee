@@ -10,8 +10,15 @@
 
 #import "RZSheetItem.h"
 
+@protocol RZItemListCellDelegate <NSObject>
+
+- (void)cellDidChangeItem;
+
+@end
+
 @interface RZItemListCell : UITableViewCell <UITextFieldDelegate>
 
+@property (nonatomic, weak) id <RZItemListCellDelegate> delegate;
 @property (nonatomic, strong) RZSheetItem *item;
 
 - (void)edit;

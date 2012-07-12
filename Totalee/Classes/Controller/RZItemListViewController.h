@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "RZSheet.h"
+#import "RZItemListCell.h"
 
-@interface RZItemListViewController : UITableViewController
+@interface RZItemListViewController : UITableViewController <RZItemListCellDelegate>
 
 @property (nonatomic, strong) RZSheet *sheet;
 
