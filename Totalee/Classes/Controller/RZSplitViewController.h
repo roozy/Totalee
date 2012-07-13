@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RZSplitViewController : UISplitViewController
+@interface RZSplitViewController : UISplitViewController <UISplitViewControllerDelegate>
 
 @end

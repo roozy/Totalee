@@ -17,6 +17,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.delegate = self;
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+
 }
 
 @end

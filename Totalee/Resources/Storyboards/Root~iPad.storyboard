@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2809" systemVersion="12A269" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="rLB-Yi-5ZR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2809" systemVersion="12A269" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="rLB-Yi-5ZR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1884"/>
     </dependencies>
@@ -20,11 +20,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sheet Name" minimumFontSize="17" text="" id="caf-LM-mMS">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="268" id="9Uk-4d-AFh"/>
-                                                <constraint firstAttribute="height" constant="31" id="EBl-gi-vwT"/>
-                                            </constraints>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sheet Name" minimumFontSize="17" text="" id="caf-LM-mMS">
+                                            <rect key="frame" x="10" y="6" width="268" height="31"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -32,10 +29,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstItem="caf-LM-mMS" firstAttribute="centerY" secondItem="gGQ-cO-nF4" secondAttribute="centerY" type="default" id="30Q-2c-h7y"/>
-                                    <constraint firstItem="caf-LM-mMS" firstAttribute="leading" secondItem="gGQ-cO-nF4" secondAttribute="leading" constant="10" id="dp4-G4-Ink"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="textField" destination="caf-LM-mMS" id="QZt-ba-NHs"/>
                                 </connections>
@@ -70,7 +63,7 @@
         <!--Split View Controller-->
         <scene sceneID="amY-1d-pS7">
             <objects>
-                <splitViewController id="rLB-Yi-5ZR" sceneMemberID="viewController">
+                <splitViewController id="rLB-Yi-5ZR" customClass="RZSplitViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <connections>
                         <segue destination="654-Li-MB3" kind="relationship" relationship="masterViewController" id="qYa-or-eTm"/>
@@ -97,40 +90,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item Name" minimumFontSize="17" text="" id="RAA-Lc-p2Y">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="31" id="4wd-NX-2Qy"/>
-                                                <constraint firstAttribute="width" constant="665" id="Orb-U8-DO9"/>
-                                            </constraints>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item Name" minimumFontSize="17" text="" id="RAA-Lc-p2Y">
+                                            <rect key="frame" x="9" y="6" width="665" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         </textField>
-                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" minimumFontSize="17" text="" textAlignment="right" id="wiC-Sx-tSp">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="5h4-nV-Bo3"/>
-                                            </constraints>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" minimumFontSize="17" text="" textAlignment="right" id="wiC-Sx-tSp">
+                                            <rect key="frame" x="692" y="6" width="66" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         </textField>
-                                        <view translatesAutoresizingMaskIntoConstraints="NO" contentMode="scaleToFill" id="QiL-CN-g2p">
+                                        <view contentMode="scaleToFill" id="QiL-CN-g2p">
+                                            <rect key="frame" x="683" y="0.0" width="1" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="wiC-Sx-tSp" secondAttribute="trailing" constant="11" id="1uE-n3-Vx9"/>
-                                    <constraint firstItem="wiC-Sx-tSp" firstAttribute="bottom" secondItem="RAA-Lc-p2Y" secondAttribute="bottom" type="default" id="EO3-iX-hxc"/>
-                                    <constraint firstItem="RAA-Lc-p2Y" firstAttribute="leading" secondItem="LIu-8B-AyF" secondAttribute="leading" constant="9" id="Ozb-TJ-1zG"/>
-                                    <constraint firstItem="wiC-Sx-tSp" firstAttribute="baseline" secondItem="RAA-Lc-p2Y" secondAttribute="baseline" type="default" id="fK8-pX-SdZ"/>
-                                    <constraint firstItem="wiC-Sx-tSp" firstAttribute="leading" secondItem="QiL-CN-g2p" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="fzb-Pu-BBX"/>
-                                    <constraint firstItem="QiL-CN-g2p" firstAttribute="bottom" secondItem="LIu-8B-AyF" secondAttribute="bottom" type="default" id="gRe-cG-TTV"/>
-                                    <constraint firstItem="RAA-Lc-p2Y" firstAttribute="top" secondItem="LIu-8B-AyF" secondAttribute="top" constant="6" id="pDS-l9-jfI"/>
-                                    <constraint firstItem="QiL-CN-g2p" firstAttribute="top" secondItem="LIu-8B-AyF" secondAttribute="top" type="default" id="pRn-a4-znn"/>
-                                    <constraint firstItem="QiL-CN-g2p" firstAttribute="leading" secondItem="RAA-Lc-p2Y" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="sip-09-Ax6"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="nameTextField" destination="RAA-Lc-p2Y" id="baX-pz-uuR"/>
                                     <outlet property="totalTextField" destination="wiC-Sx-tSp" id="Pt6-LV-XTo"/>
@@ -168,9 +149,6 @@
         </scene>
     </scenes>
     <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
         <class className="RZItemListCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RZItemListCell.h"/>
             <relationships>
@@ -189,6 +167,9 @@
         </class>
         <class className="RZSheetListTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RZSheetListTableViewController.h"/>
+        </class>
+        <class className="RZSplitViewController" superclassName="UISplitViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RZSplitViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

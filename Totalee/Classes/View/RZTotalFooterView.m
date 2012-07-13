@@ -41,8 +41,8 @@
 {
     [super layoutSubviews];
     
-    _totalLabel.frame = CGRectMake(244, 0, 70, self.contentView.frame.size.height);
-    _divider.frame = CGRectMake(235, 0, 1, self.contentView.frame.size.height);
+    _totalLabel.frame = CGRectMake(self.frame.size.width - 76.0, 0, 70, self.contentView.frame.size.height);
+    _divider.frame = CGRectMake(self.frame.size.width - 85.0, 0, 1, self.contentView.frame.size.height);
 }
 
 - (void)setTotal:(float)total
