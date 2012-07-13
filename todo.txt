@@ -1,6 +1,5 @@
 TODO:
 
 Syncing iCloud when items are being viewed.
-Add totals footer (section or tableview)
 Change order to created date (or support re-ordering a bit better)
 Fix user interactions based on Suzy feedback

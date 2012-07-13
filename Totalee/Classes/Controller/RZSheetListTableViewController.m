@@ -8,6 +8,8 @@
 
 #import "RZSheetListTableViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "RZDataManager.h"
 #import "RZSheetListCell.h"
 #import "RZItemListViewController.h"
@@ -18,6 +20,7 @@
     NSMutableArray *_sheets;
     RZDataManager *_dataManager;
     RZSheet *_selectedSheet;
+    UIView *_loadingView;
 }
 
 @end
@@ -38,9 +41,27 @@
 {
     [super viewDidLoad];
     
+    if (![NSFileManager defaultManager].ubiquityIdentityToken) return;
+    
     _dataManager = [RZDataManager sharedManager];
     if (!_dataManager.connectedToiCloud)
     {
+        self.view.userInteractionEnabled = NO;
+        
+        _loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
+        _loadingView.center = CGPointMake(self.view.frame.size.width / 2.0, (self.view.frame.size.height / 2.0) - 44.0);
+        _loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+        _loadingView.layer.cornerRadius = 10.0;
+        
+        UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
+        loadingLabel.backgroundColor = [UIColor clearColor];
+        loadingLabel.text = @"Connecting to iCloud";
+        loadingLabel.textAlignment = NSTextAlignmentCenter;
+        loadingLabel.textColor = [UIColor whiteColor];
+        [_loadingView addSubview:loadingLabel];
+        
+        [self.view addSubview:_loadingView];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudConnected) name:RZDataManagerDidConnectToiCloudNotification object:nil];
     }
     else
@@ -127,6 +148,11 @@
          
 - (void)iCloudConnected
 {
+    [_loadingView removeFromSuperview];
+    _loadingView = nil;
+    
+    self.view.userInteractionEnabled = YES;
+    
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSheet)];
