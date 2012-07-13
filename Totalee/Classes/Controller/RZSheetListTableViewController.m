@@ -141,7 +141,23 @@
     RZSheet *sheet = [_sheets objectAtIndex:indexPath.row];
     _selectedSheet = sheet;
     
-    [self performSegueWithIdentifier:@"ShowItems" sender:nil];
+    if (self.splitViewController)
+    {
+        NSArray *controllers = self.splitViewController.viewControllers;
+        for (UINavigationController *controller in controllers)
+        {
+            UIViewController *child = controller.topViewController;
+            if ([child isKindOfClass:[RZItemListViewController class]])
+            {
+                RZItemListViewController *itemList = (RZItemListViewController *)child;
+                itemList.sheet = sheet;
+            }
+        }
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"ShowItems" sender:nil];
+    }
 }
 
 #pragma mark - iCloud

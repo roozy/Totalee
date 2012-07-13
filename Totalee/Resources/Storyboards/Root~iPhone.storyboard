@@ -53,7 +53,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YS-kc-R3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="626" y="-47"/>
+            <point key="canvasLocation" x="627" y="-47"/>
         </scene>
         <!--Item List View Controller-->
         <scene sceneID="Fxf-wp-7H4">

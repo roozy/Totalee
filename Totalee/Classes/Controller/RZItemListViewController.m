@@ -28,6 +28,21 @@
 {
     [super viewDidLoad];
 
+    if (_sheet) [self initialize];
+}
+
+- (void)setSheet:(RZSheet *)sheet
+{
+    _sheet = sheet;
+    
+    if (self.view)
+    {
+        [self initialize];
+    }
+}
+
+- (void)initialize
+{
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = _sheet.name;
     
@@ -43,6 +58,7 @@
     _footer.textLabel.text = @"Total";
     
     [self updateTotal];
+    [self.tableView reloadData];
 }
 
 - (void)updateTotal

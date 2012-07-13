@@ -17,6 +17,7 @@
 		1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419415AE1E11007F1476 /* RZItemListViewController.m */; };
 		1FC5419815AE2A26007F1476 /* RZItemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419715AE2A26007F1476 /* RZItemListCell.m */; };
 		1FCC770E15B09C9300652B15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCC770D15B09C9300652B15 /* QuartzCore.framework */; };
+		1FCC771215B0A15C00652B15 /* RZSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC771115B0A15C00652B15 /* RZSplitViewController.m */; };
 		1FF727A8158BCF9300E29541 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF727A7158BCF9300E29541 /* UIKit.framework */; };
 		1FF727AA158BCF9300E29541 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF727A9158BCF9300E29541 /* Foundation.framework */; };
 		1FF727AC158BCF9300E29541 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF727AB158BCF9300E29541 /* CoreGraphics.framework */; };
@@ -48,6 +49,8 @@
 		1FC5419715AE2A26007F1476 /* RZItemListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZItemListCell.m; sourceTree = "<group>"; };
 		1FC5A47915913D2900E56862 /* Root~iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Root~iPad.storyboard"; sourceTree = "<group>"; };
 		1FCC770D15B09C9300652B15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1FCC771015B0A15C00652B15 /* RZSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSplitViewController.h; sourceTree = "<group>"; };
+		1FCC771115B0A15C00652B15 /* RZSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSplitViewController.m; sourceTree = "<group>"; };
 		1FF727A3158BCF9300E29541 /* Totalee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Totalee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF727A7158BCF9300E29541 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1FF727A9158BCF9300E29541 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,6 +99,8 @@
 				1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */,
 				1FC5419315AE1E11007F1476 /* RZItemListViewController.h */,
 				1FC5419415AE1E11007F1476 /* RZItemListViewController.m */,
+				1FCC771015B0A15C00652B15 /* RZSplitViewController.h */,
+				1FCC771115B0A15C00652B15 /* RZSplitViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */,
 				1FC5419815AE2A26007F1476 /* RZItemListCell.m in Sources */,
 				1F77119215AF381600A91D29 /* RZTotalFooterView.m in Sources */,
+				1FCC771215B0A15C00652B15 /* RZSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
