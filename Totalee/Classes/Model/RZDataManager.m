@@ -192,7 +192,8 @@ static RZDataManager *_instance;
 #pragma mark - iCloud Changes
 
 - (void)iCloudDidPostChanges:(NSNotification *)note
-{    
+{
+    NSLog(@"made changes!");
     [_fetchedSheetsController performFetch:NULL];
     
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidMakeChangesNotification object:nil]];

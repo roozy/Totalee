@@ -59,6 +59,20 @@
     
     [self updateTotal];
     [self.tableView reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
+}
+
+- (void)iCloudDataUpdated
+{
+    if (_dataManager.connectedToiCloud)
+    {
+        [_items removeAllObjects];
+        [_items addObjectsFromArray:_sheet.sortedItems];
+        
+        [self updateTotal];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)updateTotal
