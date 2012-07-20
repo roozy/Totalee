@@ -43,24 +43,38 @@
 
 - (void)initialize
 {
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.title = _sheet.name;
-    
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem)];
-    self.toolbarItems = @[ add ];
-    self.navigationController.toolbarHidden = NO;
-    
-    _items = [NSMutableArray array];
-    [_items addObjectsFromArray:_sheet.sortedItems];
-    _dataManager = [RZDataManager sharedManager];
-    
-    _footer = [[RZTotalFooterView alloc] init];
-    _footer.textLabel.text = @"Total";
-    
-    [self updateTotal];
-    [self.tableView reloadData];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
+    if (_sheet)
+    {
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        self.navigationItem.title = _sheet.name;
+        
+        UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem)];
+        self.toolbarItems = @[ add ];
+        self.navigationController.toolbarHidden = NO;
+        
+        _items = [NSMutableArray array];
+        [_items addObjectsFromArray:_sheet.sortedItems];
+        _dataManager = [RZDataManager sharedManager];
+        
+        _footer = [[RZTotalFooterView alloc] init];
+        _footer.textLabel.text = @"Total";
+        
+        [self updateTotal];
+        [self.tableView reloadData];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.title = @"";
+        self.toolbarItems = nil;
+        _footer = nil;
+        _items = [NSMutableArray array];
+        
+        [self updateTotal];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)iCloudDataUpdated

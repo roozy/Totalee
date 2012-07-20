@@ -78,6 +78,7 @@ static RZDataManager *_instance;
     NSManagedObjectContext *managedObjectContext = _managedObjectContext;
     if (managedObjectContext != nil)
     {
+        if ([managedObjectContext hasChanges]) NSLog(@"has changes, saving");
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
         {
             NSLog(@"Error saving context : %@", error);
@@ -193,7 +194,6 @@ static RZDataManager *_instance;
 
 - (void)iCloudDidPostChanges:(NSNotification *)note
 {
-    NSLog(@"made changes!");
     [_fetchedSheetsController performFetch:NULL];
     
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidMakeChangesNotification object:nil]];

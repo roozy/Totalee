@@ -21,7 +21,10 @@
     RZDataManager *_dataManager;
     RZSheet *_selectedSheet;
     UIView *_loadingView;
+    RZItemListViewController *_itemListViewController;
 }
+
+- (RZItemListViewController *)itemListViewController;
 
 @end
 
@@ -79,6 +82,31 @@
     }
 }
 
+- (RZItemListViewController *)itemListViewController
+{
+    if (!_itemListViewController)
+    {
+        if (self.splitViewController)
+        {
+            NSArray *controllers = self.splitViewController.viewControllers;
+            for (UINavigationController *controller in controllers)
+            {
+                UIViewController *child = controller.topViewController;
+                if ([child isKindOfClass:[RZItemListViewController class]])
+                {
+                    _itemListViewController = (RZItemListViewController *)child;
+                }
+            }
+        }
+        else
+        {
+            return nil;
+        }
+    }
+    
+    return _itemListViewController;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -119,6 +147,11 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
         [tableView endUpdates];
+        
+        if (self.itemListViewController)
+        {
+            self.itemListViewController.sheet = nil;
+        }
     }
 }
 
@@ -141,18 +174,9 @@
     RZSheet *sheet = [_sheets objectAtIndex:indexPath.row];
     _selectedSheet = sheet;
     
-    if (self.splitViewController)
+    if (self.itemListViewController)
     {
-        NSArray *controllers = self.splitViewController.viewControllers;
-        for (UINavigationController *controller in controllers)
-        {
-            UIViewController *child = controller.topViewController;
-            if ([child isKindOfClass:[RZItemListViewController class]])
-            {
-                RZItemListViewController *itemList = (RZItemListViewController *)child;
-                itemList.sheet = sheet;
-            }
-        }
+        self.itemListViewController.sheet = sheet;
     }
     else
     {
