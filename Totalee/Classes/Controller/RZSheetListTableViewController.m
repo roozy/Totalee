@@ -52,7 +52,7 @@
         self.view.userInteractionEnabled = NO;
         
         _loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
-        _loadingView.center = CGPointMake(self.view.frame.size.width / 2.0, (self.view.frame.size.height / 2.0) - 44.0);
+        _loadingView.center = CGPointMake(320.0 / 2.0, (460.0 / 2.0) - 44.0);
         _loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
         _loadingView.layer.cornerRadius = 10.0;
         

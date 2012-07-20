@@ -8,6 +8,13 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon-iPhone.png</string>
+		<string>Icon-iPhone@2x.png</string>
+		<string>Icon-iPad.png</string>
+		<string>Icon-iPad@2x.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>net.roozy.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>

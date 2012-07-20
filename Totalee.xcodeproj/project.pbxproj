@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1737A215B9E7F900408458 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F17379E15B9E7F900408458 /* Icon-iPad.png */; };
+		1F1737A315B9E7F900408458 /* Icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */; };
+		1F1737A415B9E7F900408458 /* Icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F1737A015B9E7F900408458 /* Icon-iPhone.png */; };
+		1F1737A515B9E7F900408458 /* Icon-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F1737A115B9E7F900408458 /* Icon-iPhone@2x.png */; };
 		1F3CBA4A158BF1AA00CF8A28 /* RZSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CBA49158BF1AA00CF8A28 /* RZSheet.m */; };
 		1F3CBA4E158BF1AB00CF8A28 /* RZSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CBA4D158BF1AB00CF8A28 /* RZSheetItem.m */; };
 		1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F17379E15B9E7F900408458 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
+		1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad@2x.png"; sourceTree = "<group>"; };
+		1F1737A015B9E7F900408458 /* Icon-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPhone.png"; sourceTree = "<group>"; };
+		1F1737A115B9E7F900408458 /* Icon-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPhone@2x.png"; sourceTree = "<group>"; };
 		1F3CBA48158BF1AA00CF8A28 /* RZSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheet.h; sourceTree = "<group>"; };
 		1F3CBA49158BF1AA00CF8A28 /* RZSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheet.m; sourceTree = "<group>"; };
 		1F3CBA4C158BF1AB00CF8A28 /* RZSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetItem.h; sourceTree = "<group>"; };
@@ -143,6 +151,10 @@
 		1F958FEA158BCFFB00AEB576 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1F17379E15B9E7F900408458 /* Icon-iPad.png */,
+				1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */,
+				1F1737A015B9E7F900408458 /* Icon-iPhone.png */,
+				1F1737A115B9E7F900408458 /* Icon-iPhone@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -265,6 +277,10 @@
 				1FF727B4158BCF9300E29541 /* InfoPlist.strings in Resources */,
 				1FF7F5A9158FBF1B00E0C4A6 /* Root~iPhone.storyboard in Resources */,
 				1FC5419215AE1B47007F1476 /* Root~iPad.storyboard in Resources */,
+				1F1737A215B9E7F900408458 /* Icon-iPad.png in Resources */,
+				1F1737A315B9E7F900408458 /* Icon-iPad@2x.png in Resources */,
+				1F1737A415B9E7F900408458 /* Icon-iPhone.png in Resources */,
+				1F1737A515B9E7F900408458 /* Icon-iPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
