@@ -27,6 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:25.0/255.0 green:62.0/255.0 blue:25.0/255.0 alpha:1.0];
+    self.navigationController.toolbar.tintColor = [UIColor colorWithRed:25.0/255.0 green:62.0/255.0 blue:25.0/255.0 alpha:1.0];
 
     if (_sheet) [self initialize];
 }
