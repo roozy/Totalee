@@ -217,7 +217,7 @@
 
 - (void)updateData
 {
-    _sheets = [NSMutableArray arrayWithArray:_dataManager.fetchedSheetsController.fetchedObjects];
+    _sheets = [NSMutableArray arrayWithArray:_dataManager.sheets];
     [self.tableView reloadData];
 }
 

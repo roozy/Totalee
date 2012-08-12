@@ -11,12 +11,23 @@
 		1F1737A315B9E7F900408458 /* Icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */; };
 		1F1737A415B9E7F900408458 /* Icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F1737A015B9E7F900408458 /* Icon-iPhone.png */; };
 		1F1737A515B9E7F900408458 /* Icon-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F1737A115B9E7F900408458 /* Icon-iPhone@2x.png */; };
-		1F3CBA4A158BF1AA00CF8A28 /* RZSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CBA49158BF1AA00CF8A28 /* RZSheet.m */; };
-		1F3CBA4E158BF1AB00CF8A28 /* RZSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CBA4D158BF1AB00CF8A28 /* RZSheetItem.m */; };
+		1F208A0215D80D1F00666F58 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F208A0115D80D1F00666F58 /* Cocoa.framework */; };
+		1F208A0C15D80D1F00666F58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F208A0A15D80D1F00666F58 /* InfoPlist.strings */; };
+		1F208A0E15D80D1F00666F58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F208A0D15D80D1F00666F58 /* main.m */; };
+		1F208A1215D80D1F00666F58 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1F208A1015D80D1F00666F58 /* Credits.rtf */; };
+		1F208A1515D80D1F00666F58 /* RZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F208A1415D80D1F00666F58 /* RZAppDelegate.m */; };
+		1F208A1815D80D2000666F58 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F208A1615D80D2000666F58 /* MainMenu.xib */; };
 		1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */; };
 		1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */; };
 		1F77119215AF381600A91D29 /* RZTotalFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F77119115AF381600A91D29 /* RZTotalFooterView.m */; };
-		1F958FEF158BD15400AEB576 /* RZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F958FEE158BD15400AEB576 /* RZDataManager.m */; };
+		1F8AA47A15D80F8100CFBEEB /* RZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47315D80F8100CFBEEB /* RZDataManager.m */; };
+		1F8AA47B15D80F8100CFBEEB /* RZSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47515D80F8100CFBEEB /* RZSheet.m */; };
+		1F8AA47C15D80F8100CFBEEB /* RZSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47715D80F8100CFBEEB /* RZSheetItem.m */; };
+		1F8AA47D15D80F8100CFBEEB /* Totalee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47815D80F8100CFBEEB /* Totalee.xcdatamodeld */; };
+		1F8AA48115D8102300CFBEEB /* RZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47315D80F8100CFBEEB /* RZDataManager.m */; };
+		1F8AA48215D8102300CFBEEB /* RZSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47515D80F8100CFBEEB /* RZSheet.m */; };
+		1F8AA48315D8102300CFBEEB /* RZSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47715D80F8100CFBEEB /* RZSheetItem.m */; };
+		1F8AA48415D8102600CFBEEB /* Totalee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47815D80F8100CFBEEB /* Totalee.xcdatamodeld */; };
 		1FC5419215AE1B47007F1476 /* Root~iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FC5A47915913D2900E56862 /* Root~iPad.storyboard */; };
 		1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419415AE1E11007F1476 /* RZItemListViewController.m */; };
 		1FC5419815AE2A26007F1476 /* RZItemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419715AE2A26007F1476 /* RZItemListCell.m */; };
@@ -38,19 +49,34 @@
 		1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad@2x.png"; sourceTree = "<group>"; };
 		1F1737A015B9E7F900408458 /* Icon-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPhone.png"; sourceTree = "<group>"; };
 		1F1737A115B9E7F900408458 /* Icon-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPhone@2x.png"; sourceTree = "<group>"; };
-		1F3CBA48158BF1AA00CF8A28 /* RZSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheet.h; sourceTree = "<group>"; };
-		1F3CBA49158BF1AA00CF8A28 /* RZSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheet.m; sourceTree = "<group>"; };
-		1F3CBA4C158BF1AB00CF8A28 /* RZSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetItem.h; sourceTree = "<group>"; };
-		1F3CBA4D158BF1AB00CF8A28 /* RZSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetItem.m; sourceTree = "<group>"; };
+		1F2089FF15D80D1F00666F58 /* Totalee-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Totalee-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F208A0115D80D1F00666F58 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		1F208A0415D80D1F00666F58 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		1F208A0515D80D1F00666F58 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1F208A0615D80D1F00666F58 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1F208A0915D80D1F00666F58 /* Totalee-OSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Totalee-OSX-Info.plist"; sourceTree = "<group>"; };
+		1F208A0B15D80D1F00666F58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F208A0D15D80D1F00666F58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1F208A0F15D80D1F00666F58 /* Totalee-OSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Totalee-OSX-Prefix.pch"; sourceTree = "<group>"; };
+		1F208A1115D80D1F00666F58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		1F208A1315D80D1F00666F58 /* RZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAppDelegate.h; sourceTree = "<group>"; };
+		1F208A1415D80D1F00666F58 /* RZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAppDelegate.m; sourceTree = "<group>"; };
+		1F208A1715D80D2000666F58 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1F6968AC15AB6BEC00A1EAA5 /* RZSheetListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListCell.h; sourceTree = "<group>"; };
 		1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetListCell.m; sourceTree = "<group>"; };
 		1F723F7B158D213D00FC0955 /* RZSheetListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListTableViewController.h; sourceTree = "<group>"; };
 		1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetListTableViewController.m; sourceTree = "<group>"; };
 		1F77119015AF381600A91D29 /* RZTotalFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZTotalFooterView.h; sourceTree = "<group>"; };
 		1F77119115AF381600A91D29 /* RZTotalFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZTotalFooterView.m; sourceTree = "<group>"; };
+		1F8AA47215D80F8100CFBEEB /* RZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZDataManager.h; sourceTree = "<group>"; };
+		1F8AA47315D80F8100CFBEEB /* RZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZDataManager.m; sourceTree = "<group>"; };
+		1F8AA47415D80F8100CFBEEB /* RZSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheet.h; sourceTree = "<group>"; };
+		1F8AA47515D80F8100CFBEEB /* RZSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheet.m; sourceTree = "<group>"; };
+		1F8AA47615D80F8100CFBEEB /* RZSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetItem.h; sourceTree = "<group>"; };
+		1F8AA47715D80F8100CFBEEB /* RZSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetItem.m; sourceTree = "<group>"; };
+		1F8AA47915D80F8100CFBEEB /* Totalee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Totalee.xcdatamodel; sourceTree = "<group>"; };
+		1F8AA48515D8121800CFBEEB /* Totalee-OSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Totalee-OSX.entitlements"; sourceTree = "<group>"; };
 		1F958FEC158BD02B00AEB576 /* Totalee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Totalee.entitlements; sourceTree = "<group>"; };
-		1F958FED158BD15400AEB576 /* RZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZDataManager.h; sourceTree = "<group>"; };
-		1F958FEE158BD15400AEB576 /* RZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZDataManager.m; sourceTree = "<group>"; };
 		1FC5419315AE1E11007F1476 /* RZItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZItemListViewController.h; sourceTree = "<group>"; };
 		1FC5419415AE1E11007F1476 /* RZItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZItemListViewController.m; sourceTree = "<group>"; };
 		1FC5419615AE2A26007F1476 /* RZItemListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZItemListCell.h; sourceTree = "<group>"; };
@@ -75,6 +101,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1F2089FC15D80D1F00666F58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F208A0215D80D1F00666F58 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1FF727A0158BCF9300E29541 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,11 +124,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F208A0315D80D1F00666F58 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F208A0415D80D1F00666F58 /* AppKit.framework */,
+				1F208A0515D80D1F00666F58 /* CoreData.framework */,
+				1F208A0615D80D1F00666F58 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		1F208A0715D80D1F00666F58 /* Totalee-OSX */ = {
+			isa = PBXGroup;
+			children = (
+				1F8AA47E15D80F9000CFBEEB /* Classes */,
+				1F8AA48515D8121800CFBEEB /* Totalee-OSX.entitlements */,
+				1F208A1315D80D1F00666F58 /* RZAppDelegate.h */,
+				1F208A1415D80D1F00666F58 /* RZAppDelegate.m */,
+				1F208A1615D80D2000666F58 /* MainMenu.xib */,
+				1F208A0815D80D1F00666F58 /* Supporting Files */,
+			);
+			path = "Totalee-OSX";
+			sourceTree = "<group>";
+		};
+		1F208A0815D80D1F00666F58 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F208A0915D80D1F00666F58 /* Totalee-OSX-Info.plist */,
+				1F208A0A15D80D1F00666F58 /* InfoPlist.strings */,
+				1F208A0D15D80D1F00666F58 /* main.m */,
+				1F208A0F15D80D1F00666F58 /* Totalee-OSX-Prefix.pch */,
+				1F208A1015D80D1F00666F58 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F8AA47015D80F8100CFBEEB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1F8AA47115D80F8100CFBEEB /* Model */,
+				1F8AA47815D80F8100CFBEEB /* Totalee.xcdatamodeld */,
+			);
+			path = Shared;
+			sourceTree = SOURCE_ROOT;
+		};
+		1F8AA47115D80F8100CFBEEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F8AA47215D80F8100CFBEEB /* RZDataManager.h */,
+				1F8AA47315D80F8100CFBEEB /* RZDataManager.m */,
+				1F8AA47415D80F8100CFBEEB /* RZSheet.h */,
+				1F8AA47515D80F8100CFBEEB /* RZSheet.m */,
+				1F8AA47615D80F8100CFBEEB /* RZSheetItem.h */,
+				1F8AA47715D80F8100CFBEEB /* RZSheetItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F8AA47E15D80F9000CFBEEB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1F8AA47F15D80F9000CFBEEB /* Controller */,
+				1F8AA48015D80F9000CFBEEB /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		1F8AA47F15D80F9000CFBEEB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F8AA48015D80F9000CFBEEB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1F958FE5158BCFFB00AEB576 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				1F958FE6158BCFFB00AEB576 /* Controller */,
-				1F958FE7158BCFFB00AEB576 /* Model */,
 				1F958FE8158BCFFB00AEB576 /* View */,
 			);
 			path = Classes;
@@ -111,19 +224,6 @@
 				1FCC771115B0A15C00652B15 /* RZSplitViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		1F958FE7158BCFFB00AEB576 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1F958FED158BD15400AEB576 /* RZDataManager.h */,
-				1F958FEE158BD15400AEB576 /* RZDataManager.m */,
-				1F3CBA48158BF1AA00CF8A28 /* RZSheet.h */,
-				1F3CBA49158BF1AA00CF8A28 /* RZSheet.m */,
-				1F3CBA4C158BF1AB00CF8A28 /* RZSheetItem.h */,
-				1F3CBA4D158BF1AB00CF8A28 /* RZSheetItem.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		1F958FE8158BCFFB00AEB576 /* View */ = {
@@ -163,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				1FF727AF158BCF9300E29541 /* Totalee */,
+				1F208A0715D80D1F00666F58 /* Totalee-OSX */,
 				1FF727A6158BCF9300E29541 /* Frameworks */,
 				1FF727A4158BCF9300E29541 /* Products */,
 			);
@@ -172,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				1FF727A3158BCF9300E29541 /* Totalee.app */,
+				1F2089FF15D80D1F00666F58 /* Totalee-OSX.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +286,8 @@
 				1FF727A9158BCF9300E29541 /* Foundation.framework */,
 				1FF727AB158BCF9300E29541 /* CoreGraphics.framework */,
 				1FF727AD158BCF9300E29541 /* CoreData.framework */,
+				1F208A0115D80D1F00666F58 /* Cocoa.framework */,
+				1F208A0315D80D1F00666F58 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -191,6 +295,7 @@
 		1FF727AF158BCF9300E29541 /* Totalee */ = {
 			isa = PBXGroup;
 			children = (
+				1F8AA47015D80F8100CFBEEB /* Shared */,
 				1F958FE5158BCFFB00AEB576 /* Classes */,
 				1F958FE9158BCFFB00AEB576 /* Resources */,
 				1FF727B8158BCF9400E29541 /* RZAppDelegate.h */,
@@ -225,6 +330,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1F2089FE15D80D1F00666F58 /* Totalee-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F208A1E15D80D2000666F58 /* Build configuration list for PBXNativeTarget "Totalee-OSX" */;
+			buildPhases = (
+				1F2089FB15D80D1F00666F58 /* Sources */,
+				1F2089FC15D80D1F00666F58 /* Frameworks */,
+				1F2089FD15D80D1F00666F58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Totalee-OSX";
+			productName = "Totalee-OSX";
+			productReference = 1F2089FF15D80D1F00666F58 /* Totalee-OSX.app */;
+			productType = "com.apple.product-type.application";
+		};
 		1FF727A2158BCF9300E29541 /* Totalee */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FF727C0158BCF9400E29541 /* Build configuration list for PBXNativeTarget "Totalee" */;
@@ -265,11 +387,22 @@
 			projectRoot = "";
 			targets = (
 				1FF727A2158BCF9300E29541 /* Totalee */,
+				1F2089FE15D80D1F00666F58 /* Totalee-OSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1F2089FD15D80D1F00666F58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F208A0C15D80D1F00666F58 /* InfoPlist.strings in Resources */,
+				1F208A1215D80D1F00666F58 /* Credits.rtf in Resources */,
+				1F208A1815D80D2000666F58 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1FF727A1158BCF9300E29541 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,6 +420,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1F2089FB15D80D1F00666F58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F208A0E15D80D1F00666F58 /* main.m in Sources */,
+				1F208A1515D80D1F00666F58 /* RZAppDelegate.m in Sources */,
+				1F8AA48115D8102300CFBEEB /* RZDataManager.m in Sources */,
+				1F8AA48215D8102300CFBEEB /* RZSheet.m in Sources */,
+				1F8AA48315D8102300CFBEEB /* RZSheetItem.m in Sources */,
+				1F8AA48415D8102600CFBEEB /* Totalee.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1FF7279F158BCF9300E29541 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -294,21 +440,46 @@
 				1FF727B6158BCF9300E29541 /* main.m in Sources */,
 				1FF727BA158BCF9400E29541 /* RZAppDelegate.m in Sources */,
 				1FF727BD158BCF9400E29541 /* Totalee.xcdatamodeld in Sources */,
-				1F958FEF158BD15400AEB576 /* RZDataManager.m in Sources */,
-				1F3CBA4A158BF1AA00CF8A28 /* RZSheet.m in Sources */,
-				1F3CBA4E158BF1AB00CF8A28 /* RZSheetItem.m in Sources */,
 				1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */,
 				1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */,
 				1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */,
 				1FC5419815AE2A26007F1476 /* RZItemListCell.m in Sources */,
 				1F77119215AF381600A91D29 /* RZTotalFooterView.m in Sources */,
 				1FCC771215B0A15C00652B15 /* RZSplitViewController.m in Sources */,
+				1F8AA47A15D80F8100CFBEEB /* RZDataManager.m in Sources */,
+				1F8AA47B15D80F8100CFBEEB /* RZSheet.m in Sources */,
+				1F8AA47C15D80F8100CFBEEB /* RZSheetItem.m in Sources */,
+				1F8AA47D15D80F8100CFBEEB /* Totalee.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1F208A0A15D80D1F00666F58 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F208A0B15D80D1F00666F58 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F208A1015D80D1F00666F58 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F208A1115D80D1F00666F58 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		1F208A1615D80D2000666F58 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F208A1715D80D2000666F58 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		1FF727B2158BCF9300E29541 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -320,6 +491,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1F208A1C15D80D2000666F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_ENTITLEMENTS = "Totalee-OSX/Totalee-OSX.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode45-DP4.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Totalee-OSX/Totalee-OSX-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "Totalee-OSX/Totalee-OSX-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1F208A1D15D80D2000666F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_ENTITLEMENTS = "Totalee-OSX/Totalee-OSX.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode45-DP4.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Totalee-OSX/Totalee-OSX-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "Totalee-OSX/Totalee-OSX-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		1FF727BE158BCF9400E29541 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -396,6 +617,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F208A1E15D80D2000666F58 /* Build configuration list for PBXNativeTarget "Totalee-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F208A1C15D80D2000666F58 /* Debug */,
+				1F208A1D15D80D2000666F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1FF7279D158BCF9300E29541 /* Build configuration list for PBXProject "Totalee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -417,6 +647,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		1F8AA47815D80F8100CFBEEB /* Totalee.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F8AA47915D80F8100CFBEEB /* Totalee.xcdatamodel */,
+			);
+			currentVersion = 1F8AA47915D80F8100CFBEEB /* Totalee.xcdatamodel */;
+			path = Totalee.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		1FF727BB158BCF9400E29541 /* Totalee.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

@@ -48,8 +48,7 @@ static RZDataManager *_instance;
     NSFileManager *manager = [NSFileManager defaultManager];
     if (!manager.ubiquityIdentityToken)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You must be signed into iCloud to use Totalee." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        NSLog(@"Error: Must be logged in to iCloud.");
         
         return;
     }
@@ -90,7 +89,6 @@ static RZDataManager *_instance;
 {
     RZSheet *sheet = [NSEntityDescription insertNewObjectForEntityForName:@"Sheet" inManagedObjectContext:_managedObjectContext];
     sheet.name = name;
-    sheet.order = ((RZSheet *)[_fetchedSheetsController.fetchedObjects lastObject]).order + 1;
     
     [self save];
     
@@ -178,13 +176,7 @@ static RZDataManager *_instance;
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
     
-    // Create the fetched results controller
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Sheet"];
-    NSSortDescriptor *orderDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
-    fetchRequest.sortDescriptors = @[ orderDescriptor ];
-    
-    _fetchedSheetsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    [_fetchedSheetsController performFetch:NULL];
+    [self refresh];
     
     _connectedToiCloud = YES;
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidConnectToiCloudNotification object:nil]];
@@ -194,9 +186,21 @@ static RZDataManager *_instance;
 
 - (void)iCloudDidPostChanges:(NSNotification *)note
 {
-    [_fetchedSheetsController performFetch:NULL];
+    [self refresh];
+    
+    NSLog(@"got data!");
     
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidMakeChangesNotification object:nil]];
+}
+
+- (void)refresh
+{
+    // Create the fetch request
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Sheet"];
+    NSSortDescriptor *orderDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
+    fetchRequest.sortDescriptors = @[ orderDescriptor ];
+    
+    _sheets = [_managedObjectContext executeFetchRequest:fetchRequest error:NULL];
 }
 
 @end

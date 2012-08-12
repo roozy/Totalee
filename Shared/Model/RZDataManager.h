@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 Roozy. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 #import "RZSheet.h"
 #import "RZSheetItem.h"
 
 @interface RZDataManager : NSObject
 
-@property BOOL connectedToiCloud;
-@property NSFetchedResultsController *fetchedSheetsController;
+@property (nonatomic) BOOL connectedToiCloud;
+@property (nonatomic, readonly) NSArray *sheets;
 
 // Initialization
 + (RZDataManager *)sharedManager;
