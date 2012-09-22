@@ -77,7 +77,6 @@ static RZDataManager *_instance;
     NSManagedObjectContext *managedObjectContext = _managedObjectContext;
     if (managedObjectContext != nil)
     {
-        if ([managedObjectContext hasChanges]) NSLog(@"has changes, saving");
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
         {
             NSLog(@"Error saving context : %@", error);

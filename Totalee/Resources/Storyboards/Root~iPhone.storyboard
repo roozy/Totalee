@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2818" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ISw-JR-WO2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ISw-JR-WO2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1900"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Sheet List Table View Controller-->
         <scene sceneID="CUM-0o-D5Z">
             <objects>
                 <tableViewController id="YxH-AJ-jW8" customClass="RZSheetListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wJz-z9-qGe">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="wJz-z9-qGe">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SheetCell" id="Xbh-sM-QQi" customClass="RZSheetListCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SheetCell" id="Xbh-sM-QQi" customClass="RZSheetListCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sheet Name" minimumFontSize="17" text="" id="rsn-mo-CPR">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="268" id="Rnb-wP-jZu"/>
-                                                <constraint firstAttribute="height" constant="31" id="jBc-mF-lRs"/>
-                                            </constraints>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sheet Name" adjustsFontSizeToFit="NO" minimumFontSize="17" id="rsn-mo-CPR">
+                                            <rect key="frame" x="10" y="14" width="299" height="31"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         </textField>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CellDivider.png" id="lk5-OY-bnu">
+                                            <rect key="frame" x="0.0" y="59" width="320" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstItem="rsn-mo-CPR" firstAttribute="centerY" secondItem="Xbh-sM-QQi" secondAttribute="centerY" type="default" id="RA1-Xb-j6y"/>
-                                    <constraint firstItem="rsn-mo-CPR" firstAttribute="leading" secondItem="Xbh-sM-QQi" secondAttribute="leading" constant="10" id="vP4-R5-zPL"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="textField" destination="rsn-mo-CPR" id="Hng-39-DvY"/>
                                 </connections>
@@ -71,40 +69,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item Name" minimumFontSize="17" text="" id="Jle-6P-Nan">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="31" id="G6G-ld-rbW"/>
-                                                <constraint firstAttribute="width" constant="218" id="mQZ-fI-5eE"/>
-                                            </constraints>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item Name" minimumFontSize="17" id="Jle-6P-Nan">
+                                            <rect key="frame" x="9" y="6" width="218" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         </textField>
-                                        <textField translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" minimumFontSize="17" text="" textAlignment="right" id="zRW-d5-QlT">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="HdR-mY-5ai"/>
-                                            </constraints>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" textAlignment="right" minimumFontSize="17" id="zRW-d5-QlT">
+                                            <rect key="frame" x="244" y="7" width="66" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         </textField>
-                                        <view translatesAutoresizingMaskIntoConstraints="NO" contentMode="scaleToFill" id="G26-cu-XN4">
+                                        <view contentMode="scaleToFill" id="G26-cu-XN4">
+                                            <rect key="frame" x="235" y="0.0" width="1" height="44"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="zRW-d5-QlT" secondAttribute="trailing" constant="10" id="0CF-JF-S6Y"/>
-                                    <constraint firstItem="zRW-d5-QlT" firstAttribute="leading" secondItem="G26-cu-XN4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="C0j-Js-Rzv"/>
-                                    <constraint firstItem="G26-cu-XN4" firstAttribute="leading" secondItem="Jle-6P-Nan" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Kpy-Md-mQE"/>
-                                    <constraint firstItem="Jle-6P-Nan" firstAttribute="leading" secondItem="oaW-R9-uQA" secondAttribute="leading" constant="9" id="jwe-Yh-aZU"/>
-                                    <constraint firstItem="G26-cu-XN4" firstAttribute="top" secondItem="oaW-R9-uQA" secondAttribute="top" type="default" id="lsv-6Z-CAW"/>
-                                    <constraint firstItem="zRW-d5-QlT" firstAttribute="bottom" secondItem="Jle-6P-Nan" secondAttribute="bottom" type="default" id="ok5-gx-uSV"/>
-                                    <constraint firstItem="Jle-6P-Nan" firstAttribute="top" secondItem="oaW-R9-uQA" secondAttribute="top" constant="6" id="qqR-hC-kqI"/>
-                                    <constraint firstItem="zRW-d5-QlT" firstAttribute="baseline" secondItem="Jle-6P-Nan" secondAttribute="baseline" type="default" id="sSu-i0-Zug"/>
-                                    <constraint firstItem="G26-cu-XN4" firstAttribute="bottom" secondItem="oaW-R9-uQA" secondAttribute="bottom" type="default" id="v2m-ha-meR"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="nameTextField" destination="Jle-6P-Nan" id="qu8-Ko-R10"/>
                                     <outlet property="totalTextField" destination="zRW-d5-QlT" id="Hb8-7Z-N3A"/>
@@ -141,10 +122,10 @@
             <point key="canvasLocation" x="100" y="-47"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CellDivider.png" width="640" height="1"/>
+    </resources>
     <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
         <class className="RZItemListCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RZItemListCell.h"/>
             <relationships>

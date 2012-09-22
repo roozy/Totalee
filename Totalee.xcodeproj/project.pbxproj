@@ -17,6 +17,17 @@
 		1F208A1215D80D1F00666F58 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1F208A1015D80D1F00666F58 /* Credits.rtf */; };
 		1F208A1515D80D1F00666F58 /* RZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F208A1415D80D1F00666F58 /* RZAppDelegate.m */; };
 		1F208A1815D80D2000666F58 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F208A1615D80D2000666F58 /* MainMenu.xib */; };
+		1F39E596160E301E0046BBD5 /* CellDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E592160E301E0046BBD5 /* CellDivider.png */; };
+		1F39E597160E301E0046BBD5 /* CellDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E592160E301E0046BBD5 /* CellDivider.png */; };
+		1F39E598160E301E0046BBD5 /* CellDivider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E593160E301E0046BBD5 /* CellDivider@2x.png */; };
+		1F39E599160E301E0046BBD5 /* CellDivider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E593160E301E0046BBD5 /* CellDivider@2x.png */; };
+		1F39E59A160E301E0046BBD5 /* NavigationBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E594160E301E0046BBD5 /* NavigationBarBackground.png */; };
+		1F39E59B160E301E0046BBD5 /* NavigationBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E594160E301E0046BBD5 /* NavigationBarBackground.png */; };
+		1F39E59C160E301E0046BBD5 /* NavigationBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E595160E301E0046BBD5 /* NavigationBarBackground@2x.png */; };
+		1F39E59D160E301E0046BBD5 /* NavigationBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E595160E301E0046BBD5 /* NavigationBarBackground@2x.png */; };
+		1F39E5A1160E31F20046BBD5 /* EuphemiaCAS.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E5A0160E31F20046BBD5 /* EuphemiaCAS.ttc */; };
+		1F39E5A2160E31F20046BBD5 /* EuphemiaCAS.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E5A0160E31F20046BBD5 /* EuphemiaCAS.ttc */; };
+		1F39E5A6160E324F0046BBD5 /* UIFont+CustomFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F39E5A5160E324F0046BBD5 /* UIFont+CustomFonts.m */; };
 		1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */; };
 		1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */; };
 		1F77119215AF381600A91D29 /* RZTotalFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F77119115AF381600A91D29 /* RZTotalFooterView.m */; };
@@ -28,6 +39,7 @@
 		1F8AA48215D8102300CFBEEB /* RZSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47515D80F8100CFBEEB /* RZSheet.m */; };
 		1F8AA48315D8102300CFBEEB /* RZSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47715D80F8100CFBEEB /* RZSheetItem.m */; };
 		1F8AA48415D8102600CFBEEB /* Totalee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AA47815D80F8100CFBEEB /* Totalee.xcdatamodeld */; };
+		1F8EBF94160CC37F0072B559 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EBF93160CC37F0072B559 /* Default-568h@2x.png */; };
 		1FC5419215AE1B47007F1476 /* Root~iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FC5A47915913D2900E56862 /* Root~iPad.storyboard */; };
 		1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419415AE1E11007F1476 /* RZItemListViewController.m */; };
 		1FC5419815AE2A26007F1476 /* RZItemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5419715AE2A26007F1476 /* RZItemListCell.m */; };
@@ -62,6 +74,13 @@
 		1F208A1315D80D1F00666F58 /* RZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAppDelegate.h; sourceTree = "<group>"; };
 		1F208A1415D80D1F00666F58 /* RZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAppDelegate.m; sourceTree = "<group>"; };
 		1F208A1715D80D2000666F58 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1F39E592160E301E0046BBD5 /* CellDivider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellDivider.png; sourceTree = "<group>"; };
+		1F39E593160E301E0046BBD5 /* CellDivider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellDivider@2x.png"; sourceTree = "<group>"; };
+		1F39E594160E301E0046BBD5 /* NavigationBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavigationBarBackground.png; sourceTree = "<group>"; };
+		1F39E595160E301E0046BBD5 /* NavigationBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavigationBarBackground@2x.png"; sourceTree = "<group>"; };
+		1F39E5A0160E31F20046BBD5 /* EuphemiaCAS.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = EuphemiaCAS.ttc; sourceTree = "<group>"; };
+		1F39E5A4160E324F0046BBD5 /* UIFont+CustomFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+CustomFonts.h"; sourceTree = "<group>"; };
+		1F39E5A5160E324F0046BBD5 /* UIFont+CustomFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+CustomFonts.m"; sourceTree = "<group>"; };
 		1F6968AC15AB6BEC00A1EAA5 /* RZSheetListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListCell.h; sourceTree = "<group>"; };
 		1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetListCell.m; sourceTree = "<group>"; };
 		1F723F7B158D213D00FC0955 /* RZSheetListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListTableViewController.h; sourceTree = "<group>"; };
@@ -76,6 +95,7 @@
 		1F8AA47715D80F8100CFBEEB /* RZSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetItem.m; sourceTree = "<group>"; };
 		1F8AA47915D80F8100CFBEEB /* Totalee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Totalee.xcdatamodel; sourceTree = "<group>"; };
 		1F8AA48515D8121800CFBEEB /* Totalee-OSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Totalee-OSX.entitlements"; sourceTree = "<group>"; };
+		1F8EBF93160CC37F0072B559 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1F958FEC158BD02B00AEB576 /* Totalee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Totalee.entitlements; sourceTree = "<group>"; };
 		1FC5419315AE1E11007F1476 /* RZItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZItemListViewController.h; sourceTree = "<group>"; };
 		1FC5419415AE1E11007F1476 /* RZItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZItemListViewController.m; sourceTree = "<group>"; };
@@ -159,6 +179,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1F39E59F160E31F20046BBD5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1F39E5A0160E31F20046BBD5 /* EuphemiaCAS.ttc */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1F39E5A3160E32390046BBD5 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				1F39E5A4160E324F0046BBD5 /* UIFont+CustomFonts.h */,
+				1F39E5A5160E324F0046BBD5 /* UIFont+CustomFonts.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		1F8AA47015D80F8100CFBEEB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +244,7 @@
 		1F958FE5158BCFFB00AEB576 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1F39E5A3160E32390046BBD5 /* Utility */,
 				1F958FE6158BCFFB00AEB576 /* Controller */,
 				1F958FE8158BCFFB00AEB576 /* View */,
 			);
@@ -242,6 +280,7 @@
 		1F958FE9158BCFFB00AEB576 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F39E59F160E31F20046BBD5 /* Fonts */,
 				1F958FEA158BCFFB00AEB576 /* Images */,
 				1FF7F5A7158FBF1B00E0C4A6 /* Storyboards */,
 			);
@@ -255,6 +294,11 @@
 				1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */,
 				1F1737A015B9E7F900408458 /* Icon-iPhone.png */,
 				1F1737A115B9E7F900408458 /* Icon-iPhone@2x.png */,
+				1F8EBF93160CC37F0072B559 /* Default-568h@2x.png */,
+				1F39E592160E301E0046BBD5 /* CellDivider.png */,
+				1F39E593160E301E0046BBD5 /* CellDivider@2x.png */,
+				1F39E594160E301E0046BBD5 /* NavigationBarBackground.png */,
+				1F39E595160E301E0046BBD5 /* NavigationBarBackground@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -400,6 +444,11 @@
 				1F208A0C15D80D1F00666F58 /* InfoPlist.strings in Resources */,
 				1F208A1215D80D1F00666F58 /* Credits.rtf in Resources */,
 				1F208A1815D80D2000666F58 /* MainMenu.xib in Resources */,
+				1F39E597160E301E0046BBD5 /* CellDivider.png in Resources */,
+				1F39E599160E301E0046BBD5 /* CellDivider@2x.png in Resources */,
+				1F39E59B160E301E0046BBD5 /* NavigationBarBackground.png in Resources */,
+				1F39E59D160E301E0046BBD5 /* NavigationBarBackground@2x.png in Resources */,
+				1F39E5A2160E31F20046BBD5 /* EuphemiaCAS.ttc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +463,12 @@
 				1F1737A315B9E7F900408458 /* Icon-iPad@2x.png in Resources */,
 				1F1737A415B9E7F900408458 /* Icon-iPhone.png in Resources */,
 				1F1737A515B9E7F900408458 /* Icon-iPhone@2x.png in Resources */,
+				1F8EBF94160CC37F0072B559 /* Default-568h@2x.png in Resources */,
+				1F39E596160E301E0046BBD5 /* CellDivider.png in Resources */,
+				1F39E598160E301E0046BBD5 /* CellDivider@2x.png in Resources */,
+				1F39E59A160E301E0046BBD5 /* NavigationBarBackground.png in Resources */,
+				1F39E59C160E301E0046BBD5 /* NavigationBarBackground@2x.png in Resources */,
+				1F39E5A1160E31F20046BBD5 /* EuphemiaCAS.ttc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +505,7 @@
 				1F8AA47B15D80F8100CFBEEB /* RZSheet.m in Sources */,
 				1F8AA47C15D80F8100CFBEEB /* RZSheetItem.m in Sources */,
 				1F8AA47D15D80F8100CFBEEB /* Totalee.xcdatamodeld in Sources */,
+				1F39E5A6160E324F0046BBD5 /* UIFont+CustomFonts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +653,7 @@
 				GCC_PREFIX_HEADER = "Totalee/Totalee-Prefix.pch";
 				INFOPLIST_FILE = "Totalee/Totalee-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "56917BA2-8A10-4345-BA94-3741E7DC16EB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "02F8E23E-4E3B-4F66-B3AB-6C722B83558D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

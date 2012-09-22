@@ -44,8 +44,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:25.0/255.0 green:62.0/255.0 blue:25.0/255.0 alpha:1.0];
-    self.navigationController.toolbar.tintColor = [UIColor colorWithRed:25.0/255.0 green:62.0/255.0 blue:25.0/255.0 alpha:1.0];
+    self.navigationController.toolbar.tintColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
     
     if (![NSFileManager defaultManager].ubiquityIdentityToken) return;
     
@@ -130,7 +129,7 @@
     RZSheet *sheet = _sheets[indexPath.row];
     cell.sheet = sheet;
     
-    if (indexPath.row == _sheets.count - 1 && [sheet.name isEqualToString:@""])
+    if (indexPath.row == 0 && [sheet.name isEqualToString:@""])
     {
         [cell edit];
     }
@@ -166,8 +165,8 @@
     
     [self.tableView beginUpdates];
     
-    [_sheets addObject:newSheet];
-    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:_sheets.count - 1 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
+    [_sheets insertObject:newSheet atIndex:0];
+    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
     
     [self.tableView endUpdates];    
 }
@@ -196,9 +195,11 @@
     
     self.view.userInteractionEnabled = YES;
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.editButtonItem.tintColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSheet)];
+    add.tintColor = [UIColor clearColor];
     self.toolbarItems = @[ add ];
     self.navigationController.toolbarHidden = NO;
     

@@ -9,6 +9,7 @@
 #import "RZSheetListCell.h"
 
 #import "RZDataManager.h"
+#import "UIFont+CustomFonts.h"
 
 @interface RZSheetListCell ()
 
@@ -18,11 +19,25 @@
 
 @implementation RZSheetListCell
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(edit)];
+        [self addGestureRecognizer:longPress];
+    }
+    
+    return self;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
+    _textField.font = [UIFont totaleeFontOfSize:_textField.font.pointSize];
     _textField.delegate = self;
+    _textField.userInteractionEnabled = NO;
 }
 
 - (void)setSheet:(RZSheet *)sheet
@@ -44,6 +59,7 @@
 
 - (void)edit
 {
+    _textField.userInteractionEnabled = YES;
     [_textField becomeFirstResponder];
 }
 
