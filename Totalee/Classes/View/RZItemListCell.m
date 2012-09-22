@@ -9,6 +9,7 @@
 #import "RZItemListCell.h"
 
 #import "RZDataManager.h"
+#import "UIFont+CustomFonts.h"
 
 @interface RZItemListCell ()
 
@@ -25,6 +26,9 @@
     
     _nameTextField.delegate = self;
     _totalTextField.delegate = self;
+    
+    _nameTextField.font = [UIFont totaleeFontOfSize:_nameTextField.font.pointSize];
+    _totalTextField.font = [UIFont totaleeFontOfSize:_totalTextField.font.pointSize];
 }
 
 - (void)setItem:(RZSheetItem *)item
@@ -36,7 +40,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    textField.textColor = [UIColor blackColor];
+    textField.textColor = [UIColor colorWithRed:100.0/255.0 green:100.0/255.0 blue:100.0/255.0 alpha:1.0];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -74,6 +78,15 @@
 - (void)edit
 {
     [_nameTextField becomeFirstResponder];
+}
+
+- (void)didTransitionToState:(UITableViewCellStateMask)state
+{
+    if (UITableViewCellStateShowingDeleteConfirmationMask)
+    {
+        [_nameTextField resignFirstResponder];
+        [_totalTextField resignFirstResponder];
+    }
 }
 
 @end

@@ -47,6 +47,11 @@
     [super viewDidLoad];
     
     self.navigationController.toolbar.tintColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
+    self.navigationItem.title = @"Sheets";
+    
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    back.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+    self.navigationItem.backBarButtonItem = back;
     
     if (![NSFileManager defaultManager].ubiquityIdentityToken) return;
     
@@ -133,7 +138,7 @@
     
     if (indexPath.row == 0 && [sheet.name isEqualToString:@""])
     {
-        [cell performSelector:@selector(edit) withObject:nil afterDelay:0.2];
+        [cell performSelector:@selector(edit) withObject:nil afterDelay:0.1];
     }
     
     return cell;

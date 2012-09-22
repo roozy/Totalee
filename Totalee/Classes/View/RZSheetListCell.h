@@ -22,6 +22,5 @@
 @property (nonatomic, strong) RZSheet *sheet;
 
 - (void)edit;
-- (void)stopEditing;
 
 @end

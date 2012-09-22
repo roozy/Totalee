@@ -11,6 +11,7 @@
 #import "RZSheetItem.h"
 #import "RZDataManager.h"
 #import "RZTotalFooterView.h"
+#import "RZPullToAddView.h"
 
 @interface RZItemListViewController ()
 {
@@ -18,6 +19,7 @@
     NSMutableArray *_items;
     RZDataManager *_dataManager;
     RZTotalFooterView *_footer;
+    RZPullToAddView *_pullToAddView;
 }
 
 @end
@@ -28,8 +30,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:25.0/255.0 green:62.0/255.0 blue:25.0/255.0 alpha:1.0];
-    self.navigationController.toolbar.tintColor = [UIColor colorWithRed:25.0/255.0 green:62.0/255.0 blue:25.0/255.0 alpha:1.0];
+    self.navigationController.toolbar.tintColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
 
     if (_sheet) [self initialize];
 }
@@ -48,19 +49,22 @@
 {
     if (_sheet)
     {
-        self.navigationItem.rightBarButtonItem = self.editButtonItem;
         self.navigationItem.title = _sheet.name;
-        
-        UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem)];
-        self.toolbarItems = @[ add ];
-        self.navigationController.toolbarHidden = NO;
         
         _items = [NSMutableArray array];
         [_items addObjectsFromArray:_sheet.sortedItems];
         _dataManager = [RZDataManager sharedManager];
         
-        _footer = [[RZTotalFooterView alloc] init];
-        _footer.textLabel.text = @"Total";
+        if (!_footer)
+        {
+            _footer = [[RZTotalFooterView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+        }
+        
+        if (!_pullToAddView)
+        {
+            _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, 320, 60)];
+            [self.view addSubview:_pullToAddView];
+        }
         
         [self updateTotal];
         [self.tableView reloadData];
@@ -69,9 +73,8 @@
     }
     else
     {
-        self.navigationItem.rightBarButtonItem = nil;
         self.navigationItem.title = @"";
-        self.toolbarItems = nil;
+        
         _footer = nil;
         _items = [NSMutableArray array];
         
@@ -110,6 +113,11 @@
     return _items.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 60;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     return _footer;
@@ -123,9 +131,9 @@
     cell.item = item;
     cell.delegate = self;
     
-    if (indexPath.row == _items.count - 1 && [item.name isEqualToString:@""])
+    if (indexPath.row == 0 && [item.name isEqualToString:@""])
     {
-        [cell edit];
+        [cell performSelector:@selector(edit) withObject:nil afterDelay:0.1];
     }
     
     return cell;
@@ -156,8 +164,8 @@
     
     [self.tableView beginUpdates];
     
-    [_items addObject:newItem];
-    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:_items.count - 1 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
+    [_items insertObject:newItem atIndex:0];
+    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
     
     [self.tableView endUpdates];
 }
@@ -167,6 +175,28 @@
 - (void)cellDidChangeItem
 {
     [self updateTotal];
+}
+
+#pragma mark - Scroll View Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y < -_pullToAddView.frame.size.height)
+    {
+        _pullToAddView.state = RZPullToAddViewStateRelease;
+    }
+    else
+    {
+        _pullToAddView.state = RZPullToAddViewStatePullDown;
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (scrollView.contentOffset.y < -_pullToAddView.frame.size.height)
+    {
+        [self addItem];
+    }
 }
 
 @end

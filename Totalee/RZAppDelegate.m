@@ -9,6 +9,7 @@
 #import "RZAppDelegate.h"
 
 #import "RZDataManager.h"
+#import "UIFont+CustomFonts.h"
 
 @implementation RZAppDelegate
 
@@ -45,6 +46,7 @@
 - (void)initializeAppearance
 {
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBarBackground.png"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ UITextAttributeFont : [UIFont totaleeFontOfSize:18.0], UITextAttributeTextColor : [UIColor colorWithRed:100.0/255.0 green:100.0/255.0 blue:100.0/255.0 alpha:1.0], UITextAttributeTextShadowColor : [UIColor clearColor] }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

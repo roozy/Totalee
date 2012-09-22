@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RZTotalFooterView : UITableViewHeaderFooterView
+@interface RZTotalFooterView : UIView
 
 @property (nonatomic) float total;
 
