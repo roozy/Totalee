@@ -13,6 +13,7 @@
 #import "RZDataManager.h"
 #import "RZSheetListCell.h"
 #import "RZItemListViewController.h"
+#import "RZPullToAddView.h"
 
 @interface RZSheetListTableViewController ()
 {
@@ -22,6 +23,7 @@
     RZSheet *_selectedSheet;
     UIView *_loadingView;
     RZItemListViewController *_itemListViewController;
+    RZPullToAddView *_pullToAddView;
 }
 
 - (RZItemListViewController *)itemListViewController;
@@ -157,21 +159,7 @@
     }
 }
 
-#pragma mark - Button Actions
-
-- (void)addSheet
-{
-    RZSheet *newSheet = [_dataManager createSheetWithName:@""];
-    
-    [self.tableView beginUpdates];
-    
-    [_sheets insertObject:newSheet atIndex:0];
-    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
-    
-    [self.tableView endUpdates];    
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RZSheet *sheet = [_sheets objectAtIndex:indexPath.row];
     _selectedSheet = sheet;
@@ -186,8 +174,22 @@
     }
 }
 
+#pragma mark - Button Actions
+
+- (void)addSheet
+{
+    RZSheet *newSheet = [_dataManager createSheetWithName:@""];
+    
+    [self.tableView beginUpdates];
+    
+    [_sheets insertObject:newSheet atIndex:0];
+    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView endUpdates];    
+}
+
 #pragma mark - iCloud
-         
+
 - (void)iCloudConnected
 {
     [_loadingView removeFromSuperview];
@@ -195,13 +197,8 @@
     
     self.view.userInteractionEnabled = YES;
     
-    self.editButtonItem.tintColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSheet)];
-    add.tintColor = [UIColor clearColor];
-    self.toolbarItems = @[ add ];
-    self.navigationController.toolbarHidden = NO;
+    _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, 320, 60)];
+    [self.view addSubview:_pullToAddView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
     
@@ -220,6 +217,28 @@
 {
     _sheets = [NSMutableArray arrayWithArray:_dataManager.sheets];
     [self.tableView reloadData];
+}
+
+#pragma mark - Scroll View Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y < -_pullToAddView.frame.size.height)
+    {
+        _pullToAddView.state = RZPullToAddViewStateRelease;
+    }
+    else
+    {
+        _pullToAddView.state = RZPullToAddViewStatePullDown;
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (scrollView.contentOffset.y < -_pullToAddView.frame.size.height)
+    {
+        [self addSheet];
+    }
 }
 
 @end

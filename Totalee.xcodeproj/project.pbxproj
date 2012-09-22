@@ -28,6 +28,7 @@
 		1F39E5A1160E31F20046BBD5 /* EuphemiaCAS.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E5A0160E31F20046BBD5 /* EuphemiaCAS.ttc */; };
 		1F39E5A2160E31F20046BBD5 /* EuphemiaCAS.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1F39E5A0160E31F20046BBD5 /* EuphemiaCAS.ttc */; };
 		1F39E5A6160E324F0046BBD5 /* UIFont+CustomFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F39E5A5160E324F0046BBD5 /* UIFont+CustomFonts.m */; };
+		1F39E5A9160E37110046BBD5 /* RZPullToAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F39E5A8160E37110046BBD5 /* RZPullToAddView.m */; };
 		1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */; };
 		1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */; };
 		1F77119215AF381600A91D29 /* RZTotalFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F77119115AF381600A91D29 /* RZTotalFooterView.m */; };
@@ -81,6 +82,8 @@
 		1F39E5A0160E31F20046BBD5 /* EuphemiaCAS.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = EuphemiaCAS.ttc; sourceTree = "<group>"; };
 		1F39E5A4160E324F0046BBD5 /* UIFont+CustomFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+CustomFonts.h"; sourceTree = "<group>"; };
 		1F39E5A5160E324F0046BBD5 /* UIFont+CustomFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+CustomFonts.m"; sourceTree = "<group>"; };
+		1F39E5A7160E37110046BBD5 /* RZPullToAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZPullToAddView.h; sourceTree = "<group>"; };
+		1F39E5A8160E37110046BBD5 /* RZPullToAddView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZPullToAddView.m; sourceTree = "<group>"; };
 		1F6968AC15AB6BEC00A1EAA5 /* RZSheetListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListCell.h; sourceTree = "<group>"; };
 		1F6968AD15AB6BEC00A1EAA5 /* RZSheetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZSheetListCell.m; sourceTree = "<group>"; };
 		1F723F7B158D213D00FC0955 /* RZSheetListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZSheetListTableViewController.h; sourceTree = "<group>"; };
@@ -273,6 +276,8 @@
 				1FC5419715AE2A26007F1476 /* RZItemListCell.m */,
 				1F77119015AF381600A91D29 /* RZTotalFooterView.h */,
 				1F77119115AF381600A91D29 /* RZTotalFooterView.m */,
+				1F39E5A7160E37110046BBD5 /* RZPullToAddView.h */,
+				1F39E5A8160E37110046BBD5 /* RZPullToAddView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 				1F8AA47C15D80F8100CFBEEB /* RZSheetItem.m in Sources */,
 				1F8AA47D15D80F8100CFBEEB /* Totalee.xcdatamodeld in Sources */,
 				1F39E5A6160E324F0046BBD5 /* UIFont+CustomFonts.m in Sources */,
+				1F39E5A9160E37110046BBD5 /* RZPullToAddView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

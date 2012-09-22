@@ -51,6 +51,7 @@
 {
     [textField resignFirstResponder];
     
+    _textField.userInteractionEnabled = NO;
     _sheet.name = _textField.text;
     [[RZDataManager sharedManager] save];
     
