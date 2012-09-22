@@ -133,7 +133,7 @@
     
     if (indexPath.row == 0 && [sheet.name isEqualToString:@""])
     {
-        [cell edit];
+        [cell performSelector:@selector(edit) withObject:nil afterDelay:0.2];
     }
     
     return cell;
@@ -142,7 +142,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
+    {        
         // Delete the row from the data source
         [tableView beginUpdates];
         

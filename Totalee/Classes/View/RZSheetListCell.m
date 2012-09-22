@@ -31,6 +31,11 @@
     return self;
 }
 
+- (void)prepareForReuse
+{
+    _textField.userInteractionEnabled = NO;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -49,7 +54,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    [_textField resignFirstResponder];
     
     _textField.userInteractionEnabled = NO;
     _sheet.name = _textField.text;
@@ -62,6 +67,11 @@
 {
     _textField.userInteractionEnabled = YES;
     [_textField becomeFirstResponder];
+}
+
+- (void)stopEditing
+{
+    [_textField resignFirstResponder];
 }
 
 @end
