@@ -11,9 +11,10 @@
 #import "RZDataManager.h"
 #import "UIFont+CustomFonts.h"
 
-@interface RZSheetListCell ()
+@interface RZSheetListCell () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField *textField;
+@property (nonatomic, strong) IBOutlet UIImageView *divider;
 
 @end
 
@@ -25,6 +26,7 @@
     if (self)
     {
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(edit)];
+        longPress.delegate = self;
         [self addGestureRecognizer:longPress];
     }
     
@@ -39,6 +41,9 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    [_divider removeFromSuperview];
+    [self addSubview:_divider];
     
     _textField.font = [UIFont totaleeFontOfSize:_textField.font.pointSize];
     _textField.delegate = self;
@@ -84,11 +89,21 @@
 
 - (void)didTransitionToState:(UITableViewCellStateMask)state
 {
-    if (UITableViewCellStateShowingDeleteConfirmationMask)
+    if (state == UITableViewCellStateShowingDeleteConfirmationMask || UITableViewCellStateShowingEditControlMask)
     {
         [_textField resignFirstResponder];
         _textField.userInteractionEnabled = NO;
     }
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return !self.editing;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
 }
 
 @end

@@ -23,9 +23,11 @@
 
 // Insert/Delete Methods
 - (RZSheet *)createSheetWithName:(NSString *)name;
+- (void)deleteSheet:(RZSheet *)sheet;
+- (void)moveSheet:(RZSheet *)sheet toIndex:(int)index;
+
 - (RZSheetItem *)createSheetItemWithName:(NSString *)name total:(float)total inSheet:(RZSheet *)sheet;
 - (void)deleteSheetItem:(RZSheetItem *)sheetItem;
-- (void)deleteSheet:(RZSheet *)sheet;
 
 @end
 

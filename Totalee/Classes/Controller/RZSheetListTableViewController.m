@@ -18,7 +18,6 @@
 @interface RZSheetListTableViewController () <RZSheetListCellDelegate>
 {
 @private
-    NSMutableArray *_sheets;
     RZDataManager *_dataManager;
     RZSheet *_selectedSheet;
     UIView *_loadingView;
@@ -31,16 +30,6 @@
 @end
 
 @implementation RZSheetListTableViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self)
-    {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -121,7 +110,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _sheets.count;
+    return _dataManager.sheets.count;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -134,7 +123,7 @@
     static NSString *CellIdentifier = @"SheetCell";
     RZSheetListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    RZSheet *sheet = _sheets[indexPath.row];
+    RZSheet *sheet = _dataManager.sheets[indexPath.row];
     cell.sheet = sheet;
     cell.delegate = self;
     
@@ -153,8 +142,7 @@
         // Delete the row from the data source
         [tableView beginUpdates];
         
-        [_dataManager deleteSheet:_sheets[indexPath.row]];
-        [_sheets removeObjectAtIndex:indexPath.row];
+        [_dataManager deleteSheet:_dataManager.sheets[indexPath.row]];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
         [tableView endUpdates];
@@ -166,9 +154,20 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [_dataManager moveSheet:_dataManager.sheets[sourceIndexPath.row] toIndex:destinationIndexPath.row];
+    NSLog(@"move em");
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RZSheet *sheet = [_sheets objectAtIndex:indexPath.row];
+    RZSheet *sheet = [_dataManager.sheets objectAtIndex:indexPath.row];
     _selectedSheet = sheet;
     
     if (self.itemListViewController)
@@ -187,8 +186,7 @@
     
     [self.tableView beginUpdates];
     
-    [_dataManager deleteSheet:_sheets[path.row]];
-    [_sheets removeObjectAtIndex:path.row];
+    [_dataManager deleteSheet:_dataManager.sheets[path.row]];
     [self.tableView deleteRowsAtIndexPaths:@[ path ] withRowAnimation:UITableViewRowAnimationFade];
     
     [self.tableView endUpdates];
@@ -197,12 +195,10 @@
 #pragma mark - Button Actions
 
 - (void)addSheet
-{
-    RZSheet *newSheet = [_dataManager createSheetWithName:@""];
-    
+{    
     [self.tableView beginUpdates];
     
-    [_sheets insertObject:newSheet atIndex:0];
+    [_dataManager createSheetWithName:@""];
     [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationNone];
     
     [self.tableView endUpdates];   
@@ -220,6 +216,9 @@
     _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, 320, 60)];
     [self.view addSubview:_pullToAddView];
     
+    self.editButtonItem.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
     
     [self updateData];
@@ -235,7 +234,6 @@
 
 - (void)updateData
 {
-    _sheets = [NSMutableArray arrayWithArray:_dataManager.sheets];
     [self.tableView reloadData];
 }
 

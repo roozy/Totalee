@@ -82,16 +82,68 @@ static RZDataManager *_instance;
             NSLog(@"Error saving context : %@", error);
         } 
     }
+    
+    [self refresh];
 }
 
 - (RZSheet *)createSheetWithName:(NSString *)name
 {
     RZSheet *sheet = [NSEntityDescription insertNewObjectForEntityForName:@"Sheet" inManagedObjectContext:_managedObjectContext];
     sheet.name = name;
+    sheet.order = 0;
+    
+    for (RZSheet *sheet in _sheets)
+    {
+        sheet.order++;
+    }
     
     [self save];
     
     return sheet;
+}
+
+- (void)deleteSheet:(RZSheet *)sheet
+{
+    NSArray *items = [sheet.items allObjects];
+    for (int i = 0; i < items.count; i++)
+    {
+        [self deleteSheetItem:items[i]];
+    }
+    
+    for (int i=[_sheets indexOfObject:sheet] + 1; i < _sheets.count; i++)
+    {
+        RZSheet *sheet = _sheets[i];
+        sheet.order--;
+    }
+    
+    [_managedObjectContext deleteObject:sheet];
+    
+    [self save];
+}
+
+- (void)moveSheet:(RZSheet *)sheet toIndex:(int)index
+{
+    int originalOrder = sheet.order;
+    sheet.order = index;
+    
+    if (index < originalOrder)
+    {
+        for (int i=index; i < originalOrder; i++)
+        {
+            RZSheet *sheet = _sheets[i];
+            sheet.order++;
+        }
+    }
+    else
+    {
+        for (int i=originalOrder + 1; i <= index; i++)
+        {
+            RZSheet *sheet = _sheets[i];
+            sheet.order--;
+        }
+    }
+    
+    [self save];
 }
 
 - (RZSheetItem *)createSheetItemWithName:(NSString *)name total:(float)total inSheet:(RZSheet *)sheet
@@ -99,7 +151,6 @@ static RZDataManager *_instance;
     RZSheetItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"SheetItem" inManagedObjectContext:_managedObjectContext];
     item.name = name;
     item.total = total;
-    item.order = ((RZSheetItem *)[sheet.sortedItems lastObject]).order + 1;
     
     [sheet addItemsObject:item];
     
@@ -112,19 +163,6 @@ static RZDataManager *_instance;
 {
     [sheetItem.sheet removeItemsObject:sheetItem];
     [_managedObjectContext deleteObject:sheetItem];
-    
-    [self save];
-}
-
-- (void)deleteSheet:(RZSheet *)sheet
-{
-    NSArray *items = [sheet.items allObjects];
-    for (int i = 0; i < items.count; i++)
-    {
-        [self deleteSheetItem:items[i]];
-    }
-    
-    [_managedObjectContext deleteObject:sheet];
     
     [self save];
 }
@@ -186,8 +224,6 @@ static RZDataManager *_instance;
 - (void)iCloudDidPostChanges:(NSNotification *)note
 {
     [self refresh];
-    
-    NSLog(@"got data!");
     
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:RZDataManagerDidMakeChangesNotification object:nil]];
 }

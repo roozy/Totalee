@@ -35,6 +35,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
+                                    <outlet property="divider" destination="lk5-OY-bnu" id="64Q-Qv-3Tf"/>
                                     <outlet property="textField" destination="rsn-mo-CPR" id="Hng-39-DvY"/>
                                 </connections>
                             </tableViewCell>
@@ -146,6 +147,7 @@
         <class className="RZSheetListCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RZSheetListCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="divider" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
             </relationships>
         </class>
