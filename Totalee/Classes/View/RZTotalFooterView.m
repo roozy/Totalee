@@ -39,7 +39,7 @@
         _totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(224, 15, 86, 30)];
         _totalLabel.backgroundColor = [UIColor clearColor];
         _totalLabel.textColor = [UIColor colorWithRed:100.0/255.0 green:100.0/255.0 blue:100.0/255.0 alpha:1.0];
-        _totalLabel.font = [UIFont totaleeBoldFontOfSize:21.0];
+        _totalLabel.font = [UIFont totaleeFontOfSize:21.0];
         _totalLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:_totalLabel];
         

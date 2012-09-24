@@ -15,7 +15,7 @@
 #import "RZItemListViewController.h"
 #import "RZPullToAddView.h"
 
-@interface RZSheetListTableViewController ()
+@interface RZSheetListTableViewController () <RZSheetListCellDelegate>
 {
 @private
     NSMutableArray *_sheets;
@@ -53,6 +53,7 @@
     back.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
     self.navigationItem.backBarButtonItem = back;
     
+    //TODO: Remove and add local store support
     if (![NSFileManager defaultManager].ubiquityIdentityToken) return;
     
     _dataManager = [RZDataManager sharedManager];
@@ -135,6 +136,7 @@
     
     RZSheet *sheet = _sheets[indexPath.row];
     cell.sheet = sheet;
+    cell.delegate = self;
     
     if (indexPath.row == 0 && [sheet.name isEqualToString:@""])
     {
@@ -179,6 +181,19 @@
     }
 }
 
+- (void)cellShouldBeDeleted:(RZSheetListCell *)cell
+{
+    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+    
+    [self.tableView beginUpdates];
+    
+    [_dataManager deleteSheet:_sheets[path.row]];
+    [_sheets removeObjectAtIndex:path.row];
+    [self.tableView deleteRowsAtIndexPaths:@[ path ] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView endUpdates];
+}
+
 #pragma mark - Button Actions
 
 - (void)addSheet
@@ -188,9 +203,9 @@
     [self.tableView beginUpdates];
     
     [_sheets insertObject:newSheet atIndex:0];
-    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationNone];
     
-    [self.tableView endUpdates];    
+    [self.tableView endUpdates];   
 }
 
 #pragma mark - iCloud

@@ -156,10 +156,10 @@ static RZDataManager *_instance;
     
     NSDictionary *options = @{ NSPersistentStoreUbiquitousContentNameKey : @"TotaleeStore",
                                 NSPersistentStoreUbiquitousContentURLKey : dataURL,
-                            NSMigratePersistentStoresAutomaticallyOption : @YES};
+                            NSMigratePersistentStoresAutomaticallyOption : [NSNumber numberWithBool:YES]};
     
     // Create the persistent store
-    NSError *error;
+    NSError *error = nil;
     _iCloudStore = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                              configuration:nil
                                                                        URL:storeURL

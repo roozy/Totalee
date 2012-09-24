@@ -45,14 +45,24 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [self updateData];
+    if (textField.text.length == 0)
+    {
+        if ([_delegate respondsToSelector:@selector(cellShouldBeDeleted:)])
+        {
+            [_delegate cellShouldBeDeleted:self];
+        }
+    }
+    else
+    {
+        [self updateData];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     
-    [self updateData];
+    //[self updateData];
     
     return NO;
 }

@@ -10,9 +10,11 @@
 
 #import "RZSheet.h"
 
+@class RZSheetListCell;
+
 @protocol RZSheetListCellDelegate <NSObject>
 
-- (void)cellDidSelectSheet:(RZSheet *)sheet;
+- (void)cellShouldBeDeleted:(RZSheetListCell *)cell;
 
 @end
 

@@ -56,11 +56,24 @@
 {
     [_textField resignFirstResponder];
     
-    _textField.userInteractionEnabled = NO;
-    _sheet.name = _textField.text;
-    [[RZDataManager sharedManager] save];
-    
     return NO;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField.text.length == 0)
+    {
+        if ([_delegate respondsToSelector:@selector(cellShouldBeDeleted:)])
+        {
+            [_delegate cellShouldBeDeleted:self];
+        }
+    }
+    else
+    {
+        _textField.userInteractionEnabled = NO;
+        _sheet.name = _textField.text;
+        [[RZDataManager sharedManager] save];
+    }
 }
 
 - (void)edit

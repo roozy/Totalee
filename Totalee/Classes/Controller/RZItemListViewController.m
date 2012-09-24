@@ -31,8 +31,17 @@
     [super viewDidLoad];
     
     self.navigationController.toolbar.tintColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight)];
+    swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipe];
 
     if (_sheet) [self initialize];
+}
+
+- (void)didSwipeRight
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)setSheet:(RZSheet *)sheet
@@ -156,6 +165,20 @@
     }
 }
 
+- (void)cellShouldBeDeleted:(RZItemListCell *)cell
+{
+    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+    
+    [self.tableView beginUpdates];
+    
+    [_dataManager deleteSheetItem:_items[path.row]];
+    [_items removeObjectAtIndex:path.row];
+    
+    [self.tableView deleteRowsAtIndexPaths:@[ path ] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView endUpdates];
+}
+
 #pragma mark - Button Actions
 
 - (void)addItem
@@ -165,7 +188,7 @@
     [self.tableView beginUpdates];
     
     [_items insertObject:newItem atIndex:0];
-    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationNone];
     
     [self.tableView endUpdates];
 }

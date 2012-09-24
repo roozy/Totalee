@@ -10,9 +10,12 @@
 
 #import "RZSheetItem.h"
 
+@class RZItemListCell;
+
 @protocol RZItemListCellDelegate <NSObject>
 
 - (void)cellDidChangeItem;
+- (void)cellShouldBeDeleted:(RZItemListCell *)cell;
 
 @end
 
