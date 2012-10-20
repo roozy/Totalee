@@ -33,6 +33,7 @@
     
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight)];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    swipe.numberOfTouchesRequired = 2;
     [self.view addGestureRecognizer:swipe];
 
     if (_sheet) [self initialize];
@@ -136,6 +137,7 @@
     RZSheetItem *item = _sheet.sortedItems[indexPath.row];
     cell.item = item;
     cell.delegate = self;
+    cell.isLastCell = (indexPath.row == _sheet.sortedItems.count - 1);
     
     if (indexPath.row == 0 && [item.name isEqualToString:@""])
     {
@@ -162,8 +164,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-{
+{    
     [_dataManager moveSheetItem:_sheet.sortedItems[sourceIndexPath.row] toIndex:destinationIndexPath.row];
+    
+    [self.tableView reloadData];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath

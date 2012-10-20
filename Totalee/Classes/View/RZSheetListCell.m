@@ -95,6 +95,19 @@
     {
         [_textField resignFirstResponder];
         _textField.userInteractionEnabled = NO;
+        
+        if (state & UITableViewCellStateShowingEditControlMask)
+        {
+            CGRect frame = _textField.frame;
+            frame.size.width = 240;
+            _textField.frame = frame;
+        }
+    }
+    else if (state == 0)
+    {
+        CGRect frame = _textField.frame;
+        frame.size.width = 300;
+        _textField.frame = frame;
     }
 }
 

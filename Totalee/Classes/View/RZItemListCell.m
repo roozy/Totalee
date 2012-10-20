@@ -22,6 +22,17 @@
 
 @implementation RZItemListCell
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        
+    }
+    
+    return self;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -42,6 +53,15 @@
     
     [self updateColors];
 }
+
+- (void)setIsLastCell:(BOOL)isLastCell
+{
+    _isLastCell = isLastCell;
+    
+    _divider.hidden = _isLastCell;
+}
+
+#pragma mark - Text Field Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -70,6 +90,13 @@
     return NO;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return !self.editing;
+}
+
+#pragma mark - Data
+
 - (void)updateData
 {
     _item.name = _nameTextField.text;
@@ -88,6 +115,8 @@
     _totalTextField.textColor = _item.total > 0 ? [UIColor colorWithRed:0 green:102.0/255.0 blue:0 alpha:1.0] : [UIColor colorWithRed:153.0/255.0 green:0 blue:0 alpha:1.0];
 }
 
+#pragma mark - Editing State
+
 - (void)edit
 {
     [_nameTextField becomeFirstResponder];
@@ -96,6 +125,7 @@
 - (void)willTransitionToState:(UITableViewCellStateMask)state
 {
     [super willTransitionToState:state];
+    return;
     
     if (state & UITableViewCellStateShowingDeleteConfirmationMask)
     {
@@ -110,6 +140,23 @@
         _totalTextField.alpha = 0.0;
     }
     else if (state == 0)
+    {
+        _totalTextField.alpha = 1.0;
+    }
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    if (editing)
+    {
+        [_nameTextField resignFirstResponder];
+        [_totalTextField resignFirstResponder];
+        
+        _totalTextField.alpha = 0.0;
+    }
+    else
     {
         _totalTextField.alpha = 1.0;
     }

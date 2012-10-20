@@ -18,6 +18,7 @@
     
     UIImageView *_divider;
     UIImageView *_bottomDivider;
+    UIImageView *_topDivider;
 }
 
 @end
@@ -50,6 +51,10 @@
         _bottomDivider = [[UIImageView alloc] initWithFrame:CGRectMake(0, 59, 320, 1)];
         _bottomDivider.image = [UIImage imageNamed:@"CellDivider.png"];
         [self addSubview:_bottomDivider];
+        
+        _topDivider = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+        _topDivider.image = [UIImage imageNamed:@"CellDivider.png"];
+        [self addSubview:_topDivider];
         
         self.backgroundColor = [UIColor colorWithRed:210.0/255.0 green:210.0/255.0 blue:210.0/255.0 alpha:1.0];
     }

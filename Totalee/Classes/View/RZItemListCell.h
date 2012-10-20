@@ -23,6 +23,7 @@
 
 @property (nonatomic, weak) id <RZItemListCellDelegate> delegate;
 @property (nonatomic, strong) RZSheetItem *item;
+@property (nonatomic) BOOL isLastCell;
 
 - (void)edit;
 
