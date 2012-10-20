@@ -15,6 +15,8 @@
 
 @property (nonatomic, weak) IBOutlet UITextField *nameTextField;
 @property (nonatomic, weak) IBOutlet UITextField *totalTextField;
+@property (nonatomic, strong) IBOutlet UIImageView *divider;
+@property (nonatomic, weak) IBOutlet UIImageView *verticalDivider;
 
 @end
 
@@ -23,6 +25,9 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    [_divider removeFromSuperview];
+    [self addSubview:_divider];
     
     _nameTextField.delegate = self;
     _totalTextField.delegate = self;
@@ -62,8 +67,6 @@
 {
     [textField resignFirstResponder];
     
-    //[self updateData];
-    
     return NO;
 }
 
@@ -90,12 +93,25 @@
     [_nameTextField becomeFirstResponder];
 }
 
-- (void)didTransitionToState:(UITableViewCellStateMask)state
+- (void)willTransitionToState:(UITableViewCellStateMask)state
 {
-    if (UITableViewCellStateShowingDeleteConfirmationMask)
+    [super willTransitionToState:state];
+    
+    if (state & UITableViewCellStateShowingDeleteConfirmationMask)
     {
         [_nameTextField resignFirstResponder];
         [_totalTextField resignFirstResponder];
+    }
+    else if (state & UITableViewCellStateShowingEditControlMask)
+    {
+        [_nameTextField resignFirstResponder];
+        [_totalTextField resignFirstResponder];
+        
+        _totalTextField.alpha = 0.0;
+    }
+    else if (state == 0)
+    {
+        _totalTextField.alpha = 1.0;
     }
 }
 

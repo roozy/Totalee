@@ -191,10 +191,10 @@ static RZDataManager *_instance;
 
 - (void)moveSheetItem:(RZSheetItem *)sheetItem toIndex:(int)index
 {
+    NSArray *sortedItems = sheetItem.sheet.sortedItems;
+    
     int originalOrder = sheetItem.order;
     sheetItem.order = index;
-    
-    NSArray *sortedItems = sheetItem.sheet.sortedItems;
     
     if (index < originalOrder)
     {

@@ -87,9 +87,11 @@
     [_textField becomeFirstResponder];
 }
 
-- (void)didTransitionToState:(UITableViewCellStateMask)state
+- (void)willTransitionToState:(UITableViewCellStateMask)state
 {
-    if (state == UITableViewCellStateShowingDeleteConfirmationMask || UITableViewCellStateShowingEditControlMask)
+    [super willTransitionToState:state];
+    
+    if (state & UITableViewCellStateShowingDeleteConfirmationMask || state & UITableViewCellStateShowingEditControlMask)
     {
         [_textField resignFirstResponder];
         _textField.userInteractionEnabled = NO;

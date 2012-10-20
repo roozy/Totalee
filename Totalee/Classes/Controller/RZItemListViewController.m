@@ -72,6 +72,9 @@
             [self.view addSubview:_pullToAddView];
         }
         
+        self.editButtonItem.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        
         [self updateTotal];
         [self.tableView reloadData];
         
@@ -80,6 +83,7 @@
     else
     {
         self.navigationItem.title = @"";
+        self.navigationItem.rightBarButtonItem = nil;
         
         _footer = nil;
         
@@ -155,6 +159,16 @@
         
         [self updateTotal];
     }
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [_dataManager moveSheetItem:_sheet.sortedItems[sourceIndexPath.row] toIndex:destinationIndexPath.row];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
 }
 
 - (void)cellShouldBeDeleted:(RZItemListCell *)cell
