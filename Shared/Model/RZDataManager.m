@@ -14,6 +14,8 @@
     NSURL *_ubiquitousContainerURL;
     
     NSPersistentStore *_iCloudStore;
+    NSPersistentStore *_localStore;
+    
     NSManagedObjectContext *_managedObjectContext;
     NSManagedObjectModel *_managedObjectModel;
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
@@ -36,6 +38,13 @@ static RZDataManager *_instance;
     });
     
     return _instance;
+}
+
+#pragma mark - Local Initialization
+
+- (void)setupLocally
+{
+    [self createPersistentStoreWithLocalURL];
 }
 
 #pragma mark - iCloud Initialization
@@ -151,6 +160,12 @@ static RZDataManager *_instance;
     RZSheetItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"SheetItem" inManagedObjectContext:_managedObjectContext];
     item.name = name;
     item.total = total;
+    item.order = 0;
+    
+    for (RZSheetItem *sheetItem in sheet.items)
+    {
+        sheetItem.order++;
+    }
     
     [sheet addItemsObject:item];
     
@@ -161,13 +176,80 @@ static RZDataManager *_instance;
 
 - (void)deleteSheetItem:(RZSheetItem *)sheetItem
 {
+    NSArray *sortedItems = sheetItem.sheet.sortedItems;
+    for (int i=[sortedItems indexOfObject:sheetItem] + 1; i < sortedItems.count; i++)
+    {
+        RZSheetItem *item = sortedItems[i];
+        item.order--;
+    }
+    
     [sheetItem.sheet removeItemsObject:sheetItem];
     [_managedObjectContext deleteObject:sheetItem];
     
     [self save];
 }
 
+- (void)moveSheetItem:(RZSheetItem *)sheetItem toIndex:(int)index
+{
+    int originalOrder = sheetItem.order;
+    sheetItem.order = index;
+    
+    NSArray *sortedItems = sheetItem.sheet.sortedItems;
+    
+    if (index < originalOrder)
+    {
+        for (int i=index; i < originalOrder; i++)
+        {
+            RZSheetItem *item = sortedItems[i];
+            item.order++;
+        }
+    }
+    else
+    {
+        for (int i=originalOrder + 1; i <= index; i++)
+        {
+            RZSheetItem *item = sortedItems[i];
+            item.order--;
+        }
+    }
+    
+    [self save];
+}
+
 #pragma mark - Core Data & iCloud Stack
+
+- (void)createPersistentStoreWithLocalURL
+{
+    NSURL *documentsDirectory = [NSURL fileURLWithPath:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+    
+    // Create the managed object model and persistent store coordinator
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Totalee" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
+    
+    // Get the store URL (not synced) and the URL for the ubiquitous content (change logs)
+    NSURL *storeURL = [documentsDirectory URLByAppendingPathComponent:@"Totalee.sqlite"];
+    NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption : [NSNumber numberWithBool:YES] };
+    
+    // Create the persistent store
+    NSError *error = nil;
+    _localStore = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                             configuration:nil
+                                                                       URL:storeURL
+                                                                   options:options
+                                                                     error:&error];
+    
+    if (error)
+    {
+        NSLog(@"Error creating local store : %@", error);
+    }
+    
+    // Create the managed object context
+    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    [_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
+    
+    [self refresh];
+}
 
 - (void)createPersistentStoreWithContainerURL:(NSURL *)url
 {

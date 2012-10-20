@@ -42,10 +42,10 @@
     back.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
     self.navigationItem.backBarButtonItem = back;
     
-    //TODO: Remove and add local store support
-    if (![NSFileManager defaultManager].ubiquityIdentityToken) return;
-    
     _dataManager = [RZDataManager sharedManager];
+    [self initializeLocally];
+    
+    /*
     if (!_dataManager.connectedToiCloud)
     {
         self.view.userInteractionEnabled = NO;
@@ -70,6 +70,7 @@
     {
         [self iCloudConnected];
     }
+     */
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -157,7 +158,6 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     [_dataManager moveSheet:_dataManager.sheets[sourceIndexPath.row] toIndex:destinationIndexPath.row];
-    NSLog(@"move em");
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -202,6 +202,19 @@
     [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationNone];
     
     [self.tableView endUpdates];   
+}
+
+#pragma mark - Local
+
+- (void)initializeLocally
+{
+    _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, 320, 60)];
+    [self.view addSubview:_pullToAddView];
+    
+    self.editButtonItem.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self updateData];
 }
 
 #pragma mark - iCloud

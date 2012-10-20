@@ -16,7 +16,6 @@
 @interface RZItemListViewController ()
 {
 @private
-    NSMutableArray *_items;
     RZDataManager *_dataManager;
     RZTotalFooterView *_footer;
     RZPullToAddView *_pullToAddView;
@@ -60,8 +59,6 @@
     {
         self.navigationItem.title = _sheet.name;
         
-        _items = [NSMutableArray array];
-        [_items addObjectsFromArray:_sheet.sortedItems];
         _dataManager = [RZDataManager sharedManager];
         
         if (!_footer)
@@ -85,7 +82,6 @@
         self.navigationItem.title = @"";
         
         _footer = nil;
-        _items = [NSMutableArray array];
         
         [self updateTotal];
         [self.tableView reloadData];
@@ -96,9 +92,6 @@
 {
     if (_dataManager.connectedToiCloud)
     {
-        [_items removeAllObjects];
-        [_items addObjectsFromArray:_sheet.sortedItems];
-        
         [self updateTotal];
         [self.tableView reloadData];
     }
@@ -107,7 +100,7 @@
 - (void)updateTotal
 {
     float total = 0.0;
-    for (RZSheetItem *item in _items)
+    for (RZSheetItem *item in _sheet.sortedItems)
     {
         total += item.total;
     }
@@ -119,7 +112,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _items.count;
+    return _sheet.sortedItems.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -136,7 +129,7 @@
 {
     RZItemListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemCell"];
     
-    RZSheetItem *item = _items[indexPath.row];
+    RZSheetItem *item = _sheet.sortedItems[indexPath.row];
     cell.item = item;
     cell.delegate = self;
     
@@ -155,8 +148,7 @@
         // Delete the row from the data source
         [tableView beginUpdates];
         
-        [_dataManager deleteSheetItem:_items[indexPath.row]];
-        [_items removeObjectAtIndex:indexPath.row];
+        [_dataManager deleteSheetItem:_sheet.sortedItems[indexPath.row]];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
         [tableView endUpdates];
@@ -171,8 +163,7 @@
     
     [self.tableView beginUpdates];
     
-    [_dataManager deleteSheetItem:_items[path.row]];
-    [_items removeObjectAtIndex:path.row];
+    [_dataManager deleteSheetItem:_sheet.sortedItems[path.row]];
     
     [self.tableView deleteRowsAtIndexPaths:@[ path ] withRowAnimation:UITableViewRowAnimationFade];
     
@@ -183,11 +174,10 @@
 
 - (void)addItem
 {
-    RZSheetItem *newItem = [_dataManager createSheetItemWithName:@"" total:0.0 inSheet:_sheet];
+    [_dataManager createSheetItemWithName:@"" total:0.0 inSheet:_sheet];
     
     [self.tableView beginUpdates];
     
-    [_items insertObject:newItem atIndex:0];
     [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationNone];
     
     [self.tableView endUpdates];

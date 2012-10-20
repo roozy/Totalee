@@ -16,7 +16,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Set up iCloud
-    [[RZDataManager sharedManager] setupiCloud];
+    //[[RZDataManager sharedManager] setupiCloud];
+    [[RZDataManager sharedManager] setupLocally];
     
     // Create the window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

@@ -18,6 +18,7 @@
 
 // Initialization
 + (RZDataManager *)sharedManager;
+- (void)setupLocally;
 - (void)setupiCloud;
 - (void)save;
 
@@ -28,6 +29,7 @@
 
 - (RZSheetItem *)createSheetItemWithName:(NSString *)name total:(float)total inSheet:(RZSheet *)sheet;
 - (void)deleteSheetItem:(RZSheetItem *)sheetItem;
+- (void)moveSheetItem:(RZSheetItem *)sheetItem toIndex:(int)index;
 
 @end
 
