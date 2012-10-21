@@ -29,12 +29,13 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.toolbar.tintColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
-    
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight)];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     swipe.numberOfTouchesRequired = 2;
+    swipe.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:swipe];
+    
+    _footer = [[RZTotalFooterView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
 
     if (_sheet) [self initialize];
 }
@@ -62,14 +63,10 @@
         
         _dataManager = [RZDataManager sharedManager];
         
-        if (!_footer)
-        {
-            _footer = [[RZTotalFooterView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-        }
-        
         if (!_pullToAddView)
         {
-            _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, 320, 60)];
+            _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, self.view.frame.size.width, 60)];
+            _pullToAddView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             [self.view addSubview:_pullToAddView];
         }
         
@@ -85,8 +82,6 @@
     {
         self.navigationItem.title = @"";
         self.navigationItem.rightBarButtonItem = nil;
-        
-        _footer = nil;
         
         [self updateTotal];
         [self.tableView reloadData];
@@ -111,6 +106,7 @@
     }
     
     _footer.total = total;
+    _footer.showTopDivider = _sheet.sortedItems.count > 0;
 }
 
 #pragma mark - Table view data source
@@ -224,7 +220,7 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (scrollView.contentOffset.y < -_pullToAddView.frame.size.height)
+    if (scrollView.contentOffset.y < -_pullToAddView.frame.size.height && _sheet)
     {
         [self addItem];
     }

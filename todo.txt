@@ -5,3 +5,5 @@ Replace item list Edit button with custom
 	- move works as usual
 	- select allows multiple selection, displays copy/cut buttons somewhere
 	- need to add paste button somewhere as well
+Add tutorial overlay
+Add iCloud option

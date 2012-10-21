@@ -33,8 +33,9 @@
         _messageLabel.text = @"Pull down to add item";
         [self addSubview:_messageLabel];
         
-        UIImageView *divider = [[UIImageView alloc] initWithFrame:CGRectMake(0, 59, 320, 1)];
+        UIImageView *divider = [[UIImageView alloc] initWithFrame:CGRectMake(0, 59, frame.size.width, 1)];
         divider.image = [UIImage imageNamed:@"CellDivider.png"];
+        divider.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self addSubview:divider];
     }
     

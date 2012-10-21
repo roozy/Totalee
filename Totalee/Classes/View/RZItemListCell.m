@@ -137,10 +137,12 @@
         [_nameTextField resignFirstResponder];
         [_totalTextField resignFirstResponder];
         
+        _divider.alpha = 0.0;
         _totalTextField.alpha = 0.0;
     }
     else if (state == 0)
     {
+        _divider.alpha = 1.0;
         _totalTextField.alpha = 1.0;
     }
 }
@@ -154,10 +156,12 @@
         [_nameTextField resignFirstResponder];
         [_totalTextField resignFirstResponder];
         
+        _verticalDivider.alpha = 0.0;
         _totalTextField.alpha = 0.0;
     }
     else
     {
+        _verticalDivider.alpha = 1.0;
         _totalTextField.alpha = 1.0;
     }
 }

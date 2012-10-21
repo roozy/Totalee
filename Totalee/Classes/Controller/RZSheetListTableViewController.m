@@ -35,8 +35,8 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.toolbar.tintColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
     self.navigationItem.title = @"Sheets";
+    self.navigationController.navigationBar.clipsToBounds = NO;
     
     UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     back.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
@@ -71,6 +71,17 @@
         [self iCloudConnected];
     }
      */
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.itemListViewController && _dataManager.sheets.count > 0)
+    {
+        self.itemListViewController.sheet = _dataManager.sheets[0];
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

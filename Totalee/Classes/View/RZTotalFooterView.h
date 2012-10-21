@@ -11,5 +11,6 @@
 @interface RZTotalFooterView : UIView
 
 @property (nonatomic) float total;
+@property (nonatomic) BOOL showTopDivider;
 
 @end
