@@ -14,6 +14,10 @@
 		<string>Icon-iPhone@2x.png</string>
 		<string>Icon-iPad.png</string>
 		<string>Icon-iPad@2x.png</string>
+		<string>Icon-Medium@2x.png</string>
+		<string>Icon-Medium.png</string>
+		<string>Icon-Small@2x.png</string>
+		<string>Icon-Small.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>net.roozy.${PRODUCT_NAME:rfc1034identifier}</string>
