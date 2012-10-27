@@ -15,12 +15,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Set up iCloud
-    //[[RZDataManager sharedManager] setupiCloud];
-    [[RZDataManager sharedManager] setupLocally];
-    
     // Create the window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1.0];
     
     UIViewController *root;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)

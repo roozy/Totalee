@@ -40,6 +40,21 @@ static RZDataManager *_instance;
     return _instance;
 }
 
+#pragma mark - Application Properties
+
+- (RZDataManagerState)state
+{
+    int currentState = [[NSUserDefaults standardUserDefaults] integerForKey:@"dataManagerState"];
+    
+    return currentState;
+}
+
+- (void)setState:(RZDataManagerState)state
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:state forKey:@"dataManagerState"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - Local Initialization
 
 - (void)setupLocally
@@ -49,13 +64,19 @@ static RZDataManager *_instance;
 
 #pragma mark - iCloud Initialization
 
+- (BOOL)canConnectToiCloud
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+
+    return manager.ubiquityIdentityToken != nil;
+}
+
 - (void)setupiCloud
 {
     _connectedToiCloud = NO;
     
     // Check the ubiquity identity
-    NSFileManager *manager = [NSFileManager defaultManager];
-    if (!manager.ubiquityIdentityToken)
+    if (!self.canConnectToiCloud)
     {
         NSLog(@"Error: Must be logged in to iCloud.");
         
@@ -69,6 +90,7 @@ static RZDataManager *_instance;
     __weak RZDataManager *weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
+        NSFileManager *manager = [NSFileManager defaultManager];
         NSURL *containerURL = [manager URLForUbiquityContainerIdentifier:nil];
         
         dispatch_async(dispatch_get_main_queue(), ^

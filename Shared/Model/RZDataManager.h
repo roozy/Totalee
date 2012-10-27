@@ -11,9 +11,19 @@
 #import "RZSheet.h"
 #import "RZSheetItem.h"
 
+typedef enum
+{
+    RZDataManagerStateUninitialized = 0,
+    RZDataManagerStateUsingiCloud,
+    RZDataManagerStateUsingLocal
+} RZDataManagerState;
+
 @interface RZDataManager : NSObject
 
-@property (nonatomic) BOOL connectedToiCloud;
+@property (nonatomic) RZDataManagerState state;
+
+@property (nonatomic, readonly) BOOL canConnectToiCloud;
+@property (nonatomic, readonly) BOOL connectedToiCloud;
 @property (nonatomic, readonly) NSArray *sheets;
 
 // Initialization

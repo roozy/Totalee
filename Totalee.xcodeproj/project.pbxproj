@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0E2175163B517B000A2657 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F0E2173163B517B000A2657 /* Icon-Small.png */; };
+		1F0E2176163B517B000A2657 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F0E2174163B517B000A2657 /* Icon-Small@2x.png */; };
+		1F0E217A163B5225000A2657 /* RZIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E2179163B5225000A2657 /* RZIntroViewController.m */; };
+		1F0E217D163B5B6A000A2657 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E217C163B5B6A000A2657 /* MBProgressHUD.m */; };
 		1F1737A215B9E7F900408458 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F17379E15B9E7F900408458 /* Icon-iPad.png */; };
 		1F1737A315B9E7F900408458 /* Icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */; };
 		1F1737A415B9E7F900408458 /* Icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F1737A015B9E7F900408458 /* Icon-iPhone.png */; };
@@ -66,6 +70,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0E2173163B517B000A2657 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		1F0E2174163B517B000A2657 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		1F0E2178163B5225000A2657 /* RZIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZIntroViewController.h; sourceTree = "<group>"; };
+		1F0E2179163B5225000A2657 /* RZIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZIntroViewController.m; sourceTree = "<group>"; };
+		1F0E217B163B5B6A000A2657 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		1F0E217C163B5B6A000A2657 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		1F17379E15B9E7F900408458 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
 		1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad@2x.png"; sourceTree = "<group>"; };
 		1F1737A015B9E7F900408458 /* Icon-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPhone.png"; sourceTree = "<group>"; };
@@ -273,6 +283,8 @@
 		1F958FE6158BCFFB00AEB576 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1F0E2178163B5225000A2657 /* RZIntroViewController.h */,
+				1F0E2179163B5225000A2657 /* RZIntroViewController.m */,
 				1F723F7B158D213D00FC0955 /* RZSheetListTableViewController.h */,
 				1F723F7C158D213D00FC0955 /* RZSheetListTableViewController.m */,
 				1FC5419315AE1E11007F1476 /* RZItemListViewController.h */,
@@ -294,6 +306,8 @@
 				1F77119115AF381600A91D29 /* RZTotalFooterView.m */,
 				1F39E5A7160E37110046BBD5 /* RZPullToAddView.h */,
 				1F39E5A8160E37110046BBD5 /* RZPullToAddView.m */,
+				1F0E217B163B5B6A000A2657 /* MBProgressHUD.h */,
+				1F0E217C163B5B6A000A2657 /* MBProgressHUD.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,6 +329,8 @@
 				1F17379F15B9E7F900408458 /* Icon-iPad@2x.png */,
 				1F1737A015B9E7F900408458 /* Icon-iPhone.png */,
 				1F1737A115B9E7F900408458 /* Icon-iPhone@2x.png */,
+				1F0E2173163B517B000A2657 /* Icon-Small.png */,
+				1F0E2174163B517B000A2657 /* Icon-Small@2x.png */,
 				1FDF95B8160E4E8D0049B945 /* Default.png */,
 				1FDF95B9160E4E8D0049B945 /* Default@2x.png */,
 				1F8EBF93160CC37F0072B559 /* Default-568h@2x.png */,
@@ -506,6 +522,8 @@
 				1F9500BB1634916A0017DFB8 /* Default-Landscape@2x.png in Resources */,
 				1F9500BC1634916A0017DFB8 /* Default-Portrait.png in Resources */,
 				1F9500BD1634916A0017DFB8 /* Default-Portrait@2x.png in Resources */,
+				1F0E2175163B517B000A2657 /* Icon-Small.png in Resources */,
+				1F0E2176163B517B000A2657 /* Icon-Small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +562,8 @@
 				1F8AA47D15D80F8100CFBEEB /* Totalee.xcdatamodeld in Sources */,
 				1F39E5A6160E324F0046BBD5 /* UIFont+CustomFonts.m in Sources */,
 				1F39E5A9160E37110046BBD5 /* RZPullToAddView.m in Sources */,
+				1F0E217A163B5225000A2657 /* RZIntroViewController.m in Sources */,
+				1F0E217D163B5B6A000A2657 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

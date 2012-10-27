@@ -43,34 +43,22 @@
     self.navigationItem.backBarButtonItem = back;
     
     _dataManager = [RZDataManager sharedManager];
-    [self initializeLocally];
+    [self initialize];
+}
+
+#pragma mark - Initialization
+
+- (void)initialize
+{
+    _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, 320, 60)];
+    [self.view addSubview:_pullToAddView];
     
-    /*
-    if (!_dataManager.connectedToiCloud)
-    {
-        self.view.userInteractionEnabled = NO;
-        
-        _loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
-        _loadingView.center = CGPointMake(320.0 / 2.0, (460.0 / 2.0) - 44.0);
-        _loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-        _loadingView.layer.cornerRadius = 10.0;
-        
-        UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
-        loadingLabel.backgroundColor = [UIColor clearColor];
-        loadingLabel.text = @"Connecting to iCloud";
-        loadingLabel.textAlignment = NSTextAlignmentCenter;
-        loadingLabel.textColor = [UIColor whiteColor];
-        [_loadingView addSubview:loadingLabel];
-        
-        [self.view addSubview:_loadingView];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudConnected) name:RZDataManagerDidConnectToiCloudNotification object:nil];
-    }
-    else
-    {
-        [self iCloudConnected];
-    }
-     */
+    self.editButtonItem.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
+    
+    [self updateData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -215,38 +203,7 @@
     [self.tableView endUpdates];   
 }
 
-#pragma mark - Local
-
-- (void)initializeLocally
-{
-    _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, 320, 60)];
-    [self.view addSubview:_pullToAddView];
-    
-    self.editButtonItem.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [self updateData];
-}
-
 #pragma mark - iCloud
-
-- (void)iCloudConnected
-{
-    [_loadingView removeFromSuperview];
-    _loadingView = nil;
-    
-    self.view.userInteractionEnabled = YES;
-    
-    _pullToAddView = [[RZPullToAddView alloc] initWithFrame:CGRectMake(0, -60, 320, 60)];
-    [self.view addSubview:_pullToAddView];
-    
-    self.editButtonItem.tintColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDataUpdated) name:RZDataManagerDidMakeChangesNotification object:nil];
-    
-    [self updateData];
-}
 
 - (void)iCloudDataUpdated
 {
