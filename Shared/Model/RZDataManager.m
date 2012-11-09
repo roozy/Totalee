@@ -42,14 +42,14 @@ static RZDataManager *_instance;
 
 #pragma mark - Application Properties
 
-- (RZDataManagerState)state
+- (RZDataManagerMode)state
 {
     int currentState = [[NSUserDefaults standardUserDefaults] integerForKey:@"dataManagerState"];
     
     return currentState;
 }
 
-- (void)setState:(RZDataManagerState)state
+- (void)setState:(RZDataManagerMode)state
 {
     [[NSUserDefaults standardUserDefaults] setInteger:state forKey:@"dataManagerState"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -85,6 +85,7 @@ static RZDataManager *_instance;
     
     // Register for iCloud changes
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudDidPostChanges:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudAccountChanged:) name:NSUbiquityIdentityDidChangeNotification object:nil];
     
     // Get the ubiquitous container URL on a separate queue
     __weak RZDataManager *weakSelf = self;
@@ -98,6 +99,23 @@ static RZDataManager *_instance;
             [weakSelf createPersistentStoreWithContainerURL:containerURL];
         });
     });
+}
+
+#pragma mark - Migration
+
+- (void)iCloudAccountChanged:(NSNotification *)notification
+{
+    
+}
+
+- (void)mergeFromLocalToiCloud
+{
+    
+}
+
+- (void)mergeFromiCloudToLocal
+{
+    
 }
 
 #pragma mark - Core Data Helpers

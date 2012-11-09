@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="wZd-f1-gib">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="wZd-f1-gib">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Sheet List Table View Controller-->
@@ -137,25 +137,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" text="Scrollview with instructions TBD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D8j-HT-jZv">
-                                        <rect key="frame" x="28" y="183" width="264" height="21"/>
+                                        <rect key="frame" x="28" y="213" width="264" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Get Started" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2FP-lB-HbQ">
-                                        <rect key="frame" x="28" y="322" width="264" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="T4y-4d-KYx">
-                                        <rect key="frame" x="35" y="358" width="250" height="30"/>
+                                        <rect key="frame" x="35" y="398" width="250" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Use iCloud">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Get Started">
                                             <color key="titleColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -166,22 +159,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="useiCloud:" destination="wZd-f1-gib" eventType="touchUpInside" id="cyl-kL-KOI"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="g56-bL-0uw">
-                                        <rect key="frame" x="35" y="394" width="250" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Do not use iCloud">
-                                            <color key="titleColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="useDevice:" destination="wZd-f1-gib" eventType="touchUpInside" id="M8l-ku-ERE"/>
+                                            <action selector="getStarted:" destination="wZd-f1-gib" eventType="touchUpInside" id="bbk-3v-vCz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -192,9 +170,7 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="YyT-Is-7I5" id="2Nk-2R-ov5"/>
-                        <outlet property="getStartedLabel" destination="2FP-lB-HbQ" id="VRC-bW-kfV"/>
-                        <outlet property="iCloudButton" destination="T4y-4d-KYx" id="wGJ-tg-Pg0"/>
-                        <outlet property="localButton" destination="g56-bL-0uw" id="Mbh-Qd-MCK"/>
+                        <outlet property="getStartedButton" destination="T4y-4d-KYx" id="UER-ii-k7U"/>
                         <outlet property="welcomeLabel" destination="LpS-Xb-MrA" id="37b-Zd-OmH"/>
                         <segue destination="ISw-JR-WO2" kind="modal" identifier="StartupAnimated" modalTransitionStyle="flipHorizontal" id="OvG-fF-Fm6"/>
                         <segue destination="ISw-JR-WO2" kind="modal" identifier="StartupNotAnimated" animates="NO" id="NiW-fT-JtQ"/>
@@ -232,12 +208,8 @@
         <class className="RZIntroViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RZIntroViewController.h"/>
             <relationships>
-                <relationship kind="action" name="useDevice:"/>
-                <relationship kind="action" name="useiCloud:"/>
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="getStartedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iCloudButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="localButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="getStartedButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

@@ -13,14 +13,14 @@
 
 typedef enum
 {
-    RZDataManagerStateUninitialized = 0,
-    RZDataManagerStateUsingiCloud,
-    RZDataManagerStateUsingLocal
-} RZDataManagerState;
+    RZDataManagerModeUninitialized = 0,
+    RZDataManagerModeUsingiCloud,
+    RZDataManagerModeUsingLocal
+} RZDataManagerMode;
 
 @interface RZDataManager : NSObject
 
-@property (nonatomic) RZDataManagerState state;
+@property (nonatomic) RZDataManagerMode mode;
 
 @property (nonatomic, readonly) BOOL canConnectToiCloud;
 @property (nonatomic, readonly) BOOL connectedToiCloud;
@@ -31,6 +31,9 @@ typedef enum
 - (void)setupLocally;
 - (void)setupiCloud;
 - (void)save;
+
+- (void)mergeFromLocalToiCloud;
+- (void)mergeFromiCloudToLocal;
 
 // Insert/Delete Methods
 - (RZSheet *)createSheetWithName:(NSString *)name;

@@ -33,7 +33,6 @@
     
     self.window.rootViewController = root;
     
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     [self initializeAppearance];

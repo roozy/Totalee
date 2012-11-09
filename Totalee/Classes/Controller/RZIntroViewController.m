@@ -15,7 +15,7 @@
 #define kStartupSegueAnimated           @"StartupAnimated"
 #define kStartupSegueNotAnimated        @"StartupNotAnimated"
 
-@interface RZIntroViewController ()
+@interface RZIntroViewController () <UIActionSheetDelegate>
 {
 @private
     RZDataManager *_dataManager;
@@ -25,13 +25,7 @@
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 
 @property (nonatomic, weak) IBOutlet UILabel *welcomeLabel;
-@property (nonatomic, weak) IBOutlet UILabel *getStartedLabel;
-
-@property (nonatomic, weak) IBOutlet UIButton *iCloudButton;
-@property (nonatomic, weak) IBOutlet UIButton *localButton;
-
-- (IBAction)useiCloud:(id)sender;
-- (IBAction)useDevice:(id)sender;
+@property (nonatomic, weak) IBOutlet UIButton *getStartedButton;
 
 @end
 
@@ -43,30 +37,23 @@
 {
     // Update fonts
     _welcomeLabel.font = [UIFont totaleeBoldFontOfSize:_welcomeLabel.font.pointSize];
-    _getStartedLabel.font = [UIFont totaleeFontOfSize:_getStartedLabel.font.pointSize];
-    _iCloudButton.titleLabel.font = [UIFont totaleeFontOfSize:_iCloudButton.titleLabel.font.pointSize];
-    _localButton.titleLabel.font = [UIFont totaleeFontOfSize:_localButton.titleLabel.font.pointSize];
+    _getStartedButton.titleLabel.font = [UIFont totaleeFontOfSize:_getStartedButton.titleLabel.font.pointSize];
     
     // Check iCloud
     _dataManager = [RZDataManager sharedManager];
-    
-    if (!_dataManager.canConnectToiCloud)
-    {
-        _iCloudButton.enabled = NO;
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     // Check the data state
-    RZDataManagerState state = _dataManager.state;
+    RZDataManagerMode mode = _dataManager.mode;
     
-    if (state == RZDataManagerStateUsingiCloud)
+    if (mode == RZDataManagerModeUsingiCloud)
     {
         _contentView.hidden = YES;
         [self startupWithiCloud:NO];
     }
-    else if (state == RZDataManagerStateUsingLocal)
+    else if (mode == RZDataManagerModeUsingLocal)
     {
         _contentView.hidden = YES;
         [self startupWithLocal:NO];
@@ -75,7 +62,34 @@
 
 #pragma mark - Button Actions
 
-- (IBAction)useiCloud:(id)sender
+- (IBAction)getStarted:(id)sender
+{
+    if (!_dataManager.canConnectToiCloud)
+    {
+        [self useDevice];
+        return;
+    }
+    
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Get Started" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Use iCloud", @"Don't Use iCloud", nil];
+    sheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [sheet showInView:self.view];
+}
+
+#pragma mark - Action Sheet Delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        [self useiCloud];
+    }
+    else if (buttonIndex == 1)
+    {
+        [self useDevice];
+    }
+}
+
+- (void)useiCloud
 {
     [UIView animateWithDuration:0.2 animations:^{
         _contentView.alpha = 0;
@@ -83,13 +97,13 @@
         _contentView.hidden = YES;
     }];
     
-    _dataManager.state = RZDataManagerStateUsingiCloud;
+    _dataManager.mode = RZDataManagerModeUsingiCloud;
     [self startupWithiCloud:YES];
 }
 
-- (IBAction)useDevice:(id)sender
+- (void)useDevice
 {
-    _dataManager.state = RZDataManagerStateUsingLocal;
+    _dataManager.mode = RZDataManagerModeUsingLocal;
     [self startupWithLocal:YES];
 }
 
