@@ -67,7 +67,6 @@
 		1FF727B4158BCF9300E29541 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FF727B2158BCF9300E29541 /* InfoPlist.strings */; };
 		1FF727B6158BCF9300E29541 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF727B5158BCF9300E29541 /* main.m */; };
 		1FF727BA158BCF9400E29541 /* RZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF727B9158BCF9400E29541 /* RZAppDelegate.m */; };
-		1FF727BD158BCF9400E29541 /* Totalee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FF727BB158BCF9400E29541 /* Totalee.xcdatamodeld */; };
 		1FF7F5A9158FBF1B00E0C4A6 /* Root~iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF7F5A8158FBF1B00E0C4A6 /* Root~iPhone.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -149,7 +148,6 @@
 		1FF727B7158BCF9300E29541 /* Totalee-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Totalee-Prefix.pch"; sourceTree = "<group>"; };
 		1FF727B8158BCF9400E29541 /* RZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAppDelegate.h; sourceTree = "<group>"; };
 		1FF727B9158BCF9400E29541 /* RZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAppDelegate.m; sourceTree = "<group>"; };
-		1FF727BC158BCF9400E29541 /* Totalee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Totalee.xcdatamodel; sourceTree = "<group>"; };
 		1FF7F5A8158FBF1B00E0C4A6 /* Root~iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Root~iPhone.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -395,7 +393,6 @@
 				1F958FE9158BCFFB00AEB576 /* Resources */,
 				1FF727B8158BCF9400E29541 /* RZAppDelegate.h */,
 				1FF727B9158BCF9400E29541 /* RZAppDelegate.m */,
-				1FF727BB158BCF9400E29541 /* Totalee.xcdatamodeld */,
 				1FF727B0158BCF9300E29541 /* Supporting Files */,
 			);
 			path = Totalee;
@@ -557,7 +554,6 @@
 			files = (
 				1FF727B6158BCF9300E29541 /* main.m in Sources */,
 				1FF727BA158BCF9400E29541 /* RZAppDelegate.m in Sources */,
-				1FF727BD158BCF9400E29541 /* Totalee.xcdatamodeld in Sources */,
 				1F723F7D158D213D00FC0955 /* RZSheetListTableViewController.m in Sources */,
 				1F6968AE15AB6BEC00A1EAA5 /* RZSheetListCell.m in Sources */,
 				1FC5419515AE1E11007F1476 /* RZItemListViewController.m in Sources */,
@@ -775,16 +771,6 @@
 				1F8AA47915D80F8100CFBEEB /* Totalee.xcdatamodel */,
 			);
 			currentVersion = 1F8AA47915D80F8100CFBEEB /* Totalee.xcdatamodel */;
-			path = Totalee.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		1FF727BB158BCF9400E29541 /* Totalee.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1FF727BC158BCF9400E29541 /* Totalee.xcdatamodel */,
-			);
-			currentVersion = 1FF727BC158BCF9400E29541 /* Totalee.xcdatamodel */;
 			path = Totalee.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

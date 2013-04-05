@@ -8,6 +8,9 @@
 
 #import "RZDataManager.h"
 
+NSString *RZDataManagerDidConnectToiCloudNotification = @"RZDataManagerDidConnectToiCloudNotification";
+NSString *RZDataManagerDidMakeChangesNotification = @"RZDataManagerDidMakeChangesNotification";
+
 @interface RZDataManager ()
 {
 @private

@@ -46,5 +46,5 @@ typedef enum
 
 @end
 
-static NSString *RZDataManagerDidConnectToiCloudNotification = @"RZDataManagerDidConnectToiCloudNotification";
-static NSString *RZDataManagerDidMakeChangesNotification = @"RZDataManagerDidMakeChangesNotification";
+extern NSString *RZDataManagerDidConnectToiCloudNotification;
+extern NSString *RZDataManagerDidMakeChangesNotification;
